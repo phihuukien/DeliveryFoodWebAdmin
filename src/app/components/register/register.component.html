@@ -1,0 +1,81 @@
+<section class="ftco-section">
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-10">
+                <div class="wrap d-md-flex">
+                    <div class="img" style="background-image: url(assets/login/images/foodlogin.jpg);">
+                    </div>
+                    <div class="login-wrap p-4 p-md-5">
+                        <div class="d-flex">
+                            <div class="w-100">
+                                <h3 class="mb-4">Sign Up</h3>
+                            </div>
+
+                        </div>
+                        <p class="error_text" *ngIf="errorText.length > 0">{{errorText}}</p>
+                        <form action="post" [formGroup]="registerF" class="signin-form" (submit)="onRegister()">
+                            <div class="form-group mb-3">
+                                <label class="label" for="name">Username</label>
+                                <input type="text" class="form-control" placeholder="Username"
+                                    formControlName="username">
+                                <div class="error_text"
+                                    *ngIf="registerF['controls']['username'].dirty && registerF['controls']['username'].errors">
+                                    <small *ngIf="registerF['controls']['username'].errors['required']">Username is
+                                        required.</small>
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="label" for="name">Email</label>
+                                <input type="text" class="form-control" placeholder="Email" formControlName="email">
+                                <div class="error_text"
+                                    *ngIf="registerF['controls']['email'].dirty && registerF['controls']['email'].errors">
+                                    <small *ngIf="registerF['controls']['email'].errors['required']">Email is
+                                        required.</small>
+                                        <small *ngIf="registerF['controls']['email'].errors['email']">Invalid email format</small>
+                                </div>
+                            </div>
+                            <div class="form-group mb-0">
+                                <label class="label" for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password"
+                                    formControlName="password">
+                                <i class="{{eyePassword}} eye-pass" (click)="passwordOpen('password')"></i>
+
+                            </div>
+                            <div class="error_text"
+                                *ngIf="registerF['controls']['password'].dirty && registerF['controls']['password'].errors">
+                                <small *ngIf="registerF['controls']['password'].errors['required']">Password is
+                                    required.</small>
+                                    <small *ngIf="registerF['controls']['password'].errors['minlength']">Password minimum 8 characters.</small>
+                                        <small *ngIf="registerF['controls']['password'].errors['maxlength']">Password maximum 16 characters.</small>
+                            </div>
+                            <div class="form-group mt-3 mb-0">
+                                <label class="label" for="password">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPassword"
+                                    placeholder="Confirm Password" formControlName="confirmPassword"
+                                    (keyup)="confirmPassword()">
+                                <i class="{{eyeConfirmPassword}} eye-pass"
+                                    (click)="passwordOpen('confirmPassword')"></i>
+
+                            </div>
+                            <div class="error_text"
+                                *ngIf="registerF['controls']['confirmPassword'].dirty && registerF['controls']['confirmPassword'].errors">
+                                <small *ngIf="registerF['controls']['confirmPassword'].errors['required']">Confirm
+                                    Password is required.</small>
+                            </div>
+                            <small class="error_text" *ngIf="passwordMatches">Password mismatched.</small>
+                            <div class="form-group mt-3">
+                                <button type="submit" class="form-control btn btn-primary rounded submit px-3"
+                                    [disabled]="registerF.invalid">Sign
+                                    Up</button>
+                            </div>
+
+                        </form>
+                        <p class="text-center">Do you already have an account? <a data-toggle="tab"
+                                [routerLink]="['/login']">Sign In </a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

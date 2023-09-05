@@ -1,0 +1,19 @@
+<div class="restaurantBackgroup" style="background-image:   linear-gradient(to top, rgb(44, 41, 47),rgba(3 2 3/ 73%)), url(assets/login/images/restaurant.jpg);">
+  
+    <div class="list_restaurant" id="list_restaurant">
+     
+        <div *ngFor="let item of restaurants"  class="restaurant {{item.name}}" (click)="activeRestaurant(item.name, item.id)">
+            <div class="Img"  >
+                <img src="{{imagesApiUrl}}/logo/{{item.images.poster}}.png" class="restaurant_img" alt="">
+            </div>
+            <div class="text_restaurant">
+                <p class="mb-0">{{item.name}}</p>
+                <p class="mb-0">{{item.location}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="button" routerLink="/dasboard/restaurant/{{restaurantId}}"
+   >
+        <button style="--clr:#39FF14" ><span>Open the door</span><i></i></button>
+    </div>
+</div>
