@@ -114,9 +114,14 @@
        
        
           <a (click)="logout()" class="dropdown-item dropdown-footer">
-            <i class="fas fa-sign-out-alt mr-2"></i> Log out</a>
+            <i class="fas fa-sign-out-alt mr-2" data-toggle="tooltip" data-placement="button" title="Log out!"></i> Log out</a>
         
       </div>
+    </li>
+    <li style=" margin-left: 8px; align-self: center;">
+      <span (click)="logout()" data-toggle="tooltip" data-placement="button" title="Log out!" >
+        <i  class="fas fa-sign-out-alt mr-2"  ></i></span>
+    
     </li>
 
 

@@ -8,17 +8,25 @@ import { ChooseRestaurantComponent } from './components/choose-restaurant/choose
 import { CreateRestaurantComponent } from './components/create-restaurant/create-restaurant.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { OrderComponent } from './components/order/order.component';
+import { DashboardPartnerComponent } from './components/dashboardpartner/dashboard-partner/dashboard-partner.component';
+import { DashboardAdminComponent } from './components/dashboardadmin/dashboard-admin/dashboard-admin.component';
+import { InvoiceComponent } from './components/invoice/invoice.component';
 
 const routes: Routes = [
-  {path:"dasboard",component:DashboardComponent,canActivate:[AuthGuard],data: { roles: ['ADMIN'] }},
+  {path:"dasboard",component:DashboardComponent,canActivate:[AuthGuard],data: { roles: ['DEFAULT'] }},
+  {path:"dasboard_partner",component:DashboardPartnerComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER'] }},
+  {path:"dasboard_admin",component:DashboardAdminComponent,canActivate:[AuthGuard],data: { roles: ['ADMIN']}},
   {path:"restaurants",component:RestaurantsComponent,canActivate:[AuthGuard],data: { roles: ['ADMIN']} },
-  {path:"dasboard/restaurant/:id",component:DashboardComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
+  
+  {path:"order",component:OrderComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"login",component:LoginComponent},
+  {path:"invoice/:orderId",component:InvoiceComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"not_found",component:NotFoundComponent},
   {path:"register",component:RegisterComponent},
   {path:"choose_restaurant",component:ChooseRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"create_restaurant",component:CreateRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
-  {path:"",redirectTo:"login",pathMatch:"prefix"},
+  {path:"",redirectTo:"dasboard",pathMatch:"prefix"},
 
 ];
 

@@ -12,7 +12,8 @@ export class HeaderComponent {
 
   }
   logout(){
-    localStorage.removeItem('token');
+    this.auth.logout();
     this.router.navigate(['/login']);
   }
+  
 }

@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
           if (response.status) {
             this.auth.storeToken(response.accessToken);
             if (this.auth.decodedToken().role == 'ADMIN') {
-              this.router.navigate(['/dasboard']);
+              this.router.navigate(['/dasboard_admin']);
             } else if (this.auth.decodedToken().role == 'PARTNER') {
               this.Restaurant.getRestaurantsByUsername(this.auth.decodedToken().name).subscribe((response: any) => {
                 if (response.status) {

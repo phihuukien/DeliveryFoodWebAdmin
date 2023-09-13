@@ -3,6 +3,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from 'src/app/services/authentication/auth.service';
 import { RestaurantsService } from 'src/app/services/restaurants/restaurants.service';
 import {GlobalVariable} from 'src/apiGlobal'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-choose-restaurant',
@@ -13,8 +14,10 @@ export class ChooseRestaurantComponent implements OnInit {
 
   imagesApiUrl = GlobalVariable.IMAGES_API_URL
   restaurants: any;
-  restaurantId: string = '';
-  constructor(private restaurantService: RestaurantsService, private auth: AuthService,private cookieService: CookieService) {
+  constructor(private restaurantService: RestaurantsService, 
+    private auth: AuthService,
+    private cookieService: CookieService,
+    private router : Router) {
 
   }
   ngOnInit(): void {
@@ -32,14 +35,15 @@ export class ChooseRestaurantComponent implements OnInit {
   }
  
 
-  activeRestaurant(name: string, id: string) {
+  activeRestaurant(name: string, id: string, img :string) {
     const current = document.getElementsByClassName("active");
     if (current.length > 0) {
       (current[0] as HTMLElement).className = (current[0] as HTMLElement).className.replace(" active", "");
     }
     const btns = document.getElementsByClassName(name);
     btns[0].className += " active"
-    this.restaurantId = id;
     this.cookieService.set('restaurantId', id);
+    this.cookieService.set('restaurantname', name);
+    this.cookieService.set('img', img);
   }
 }

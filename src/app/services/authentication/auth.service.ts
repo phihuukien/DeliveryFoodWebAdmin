@@ -5,6 +5,7 @@ import { map, Observable } from 'rxjs';
 import { RequestUser } from 'src/app/Models/RequestUser';
 import {GlobalVariable} from 'src/apiGlobal'
 import { RequestRegister } from 'src/app/Models/RequestRegister';
+import { CookieService } from 'ngx-cookie-service';
 const api = GlobalVariable.BASE_API_URL+GlobalVariable.LOGIN;
 const api_register = GlobalVariable.BASE_API_URL+GlobalVariable.REGISTER;
 @Injectable({
@@ -13,7 +14,7 @@ const api_register = GlobalVariable.BASE_API_URL+GlobalVariable.REGISTER;
 export class AuthService {
   private userPayLoad: any;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private cookieService: CookieService) {
     this.userPayLoad = this.decodedToken();
    
   }
@@ -30,7 +31,7 @@ export class AuthService {
     }))
   };
   logout() {
-    localStorage.removeItem('token')
+    this.cookieService.delete('token');
   };
   isTokenExpired():boolean{
     const jwtHelper = new JwtHelperService();
@@ -40,13 +41,16 @@ export class AuthService {
     return false;
   }
   storeToken(tokenValue: string) {
-    localStorage.setItem('token', tokenValue)
+    this.cookieService.set('token', tokenValue);
+    // localStorage.setItem('token', tokenValue)
   }
   getToken() {
-    return localStorage.getItem('token')
+    return this.cookieService.get('token');
+    // return localStorage.getItem('token')
   }
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('token')
+    return !!this.cookieService.get('token');
+    // return !!localStorage.getItem('token')
   }
   decodedToken() {
     const jwtHelper = new JwtHelperService();

@@ -12,7 +12,7 @@ export class RestaurantsService {
   constructor(private http : HttpClient) { }
 
   getAllRestaurants(page:number): Observable<Array<Restaurants>>{
-   
+
       return this.http.get<Array<Restaurants>>(api+'?page='+page);
   }
   getRestaurantsByUsername (username:string): Observable<Array<Restaurants>>{

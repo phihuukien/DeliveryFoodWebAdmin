@@ -19,6 +19,9 @@ import { CreateRestaurantComponent } from './components/create-restaurant/create
 import { RegisterComponent } from './components/register/register.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
+import { DashboardPartnerComponent } from './components/dashboardpartner/dashboard-partner/dashboard-partner.component';
+import { DashboardAdminComponent } from './components/dashboardadmin/dashboard-admin/dashboard-admin.component';
+import { InvoiceComponent } from './components/invoice/invoice.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { AuthGuard } from './guards/auth.guard';
     ChooseRestaurantComponent,
     CreateRestaurantComponent,
     RegisterComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DashboardPartnerComponent,
+    DashboardAdminComponent,
+    InvoiceComponent
 
   ],
   imports: [

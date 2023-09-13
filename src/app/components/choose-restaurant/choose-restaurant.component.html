@@ -2,7 +2,7 @@
   
     <div class="list_restaurant" id="list_restaurant">
      
-        <div *ngFor="let item of restaurants"  class="restaurant {{item.name}}" (click)="activeRestaurant(item.name, item.id)">
+        <div *ngFor="let item of restaurants"  class="restaurant {{item.name}}" (click)="activeRestaurant(item.name, item.id, item.images.poster)">
             <div class="Img"  >
                 <img src="{{imagesApiUrl}}/logo/{{item.images.poster}}.png" class="restaurant_img" alt="">
             </div>
@@ -12,8 +12,7 @@
             </div>
         </div>
     </div>
-    <div class="button" routerLink="/dasboard/restaurant/{{restaurantId}}"
-   >
+    <div class="button" routerLink="/dasboard">
         <button style="--clr:#39FF14" ><span>Open the door</span><i></i></button>
     </div>
 </div>
