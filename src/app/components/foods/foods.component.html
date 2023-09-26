@@ -5,73 +5,77 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-
-
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="m-0">List Foods</h1>
-        </div><!-- /.col -->
-        <div class="col-sm-6">
-          <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a routerLink="/list-foods">Foods</a></li>
-            <li class="breadcrumb-item active">List Foos</li>
-          </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
-
-  <!-- Main content -->
-  <section class="content">
-    <div class="container-fluid">
-      <div class="col-12">
-        <div class="card">
-          <!-- /.card-header -->
-          <div class="card-body">
-            <table id="example2" class="table table-bordered table-hover">
-              <thead>
-                <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td>C</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!-- /.card-body -->
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>List Foods</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a routerLink="/list-foods">Foods</a></li>
+                        <li class="breadcrumb-item active">List Foods</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                   <div class="card-header">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-lg-6 col-md-6 col-sm-5 flex-inline d-flex">
+                            <input type="search" class="form-control w-50" placeholder="Search..." name="search" id="search">
+                            <button type="button" class="button w-25 form-control bg-gradient-primary">Search</button>
+                        </div>
+                        <div class="col-lg-2 col-3 col-sm-2">
+                            <a  [routerLink]="['/create-food']"  class="btn form-control bg-primary">Add</a>
+                        </div>
+                    </div>         
+                   </div>
+                    
+                    <div class="card-body">
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Name</th>
+                                    <th>price</th>
+                                    <th>image</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody >                               
+                                <tr *ngFor="let f of foods">
+                                    <td>1</td>
+                                    <td>{{f.name}}</td>
+                                    <td>{{f.price}}</td>
+                                    <td>{{f.image}}</td>
+                                    <td>
+                                        <button type="button" class="btn btn-block bg-gradient-primary btn-sm">Detail</button>
+                                        <button type="button" class="btn btn-block bg-gradient-danger btn-sm">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+                <!-- /.card -->
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
         </div>
-      </div>
-    </div><!-- /.container-fluid -->
-  </section>
-  <!-- /.content -->
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
 </div>
+
+
 <!-- /.content-wrapper -->
 <app-footer></app-footer>
 <!-- ./wrapper -->
