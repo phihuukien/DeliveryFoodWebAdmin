@@ -24,6 +24,7 @@ import { DashboardAdminComponent } from './components/dashboardadmin/dashboard-a
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import { FoodsComponent } from './components/foods/foods.component';
 import { CreateFoodComponent } from './components/create-food/create-food.component';
+import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CreateFoodComponent } from './components/create-food/create-food.compon
     DashboardAdminComponent,
     InvoiceComponent,
     FoodsComponent,
-    CreateFoodComponent
+    CreateFoodComponent,
+    ListRestaurantsComponent
 
   ],
   imports: [
