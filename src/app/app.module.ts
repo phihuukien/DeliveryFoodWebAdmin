@@ -22,6 +22,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { DashboardPartnerComponent } from './components/dashboardpartner/dashboard-partner/dashboard-partner.component';
 import { DashboardAdminComponent } from './components/dashboardadmin/dashboard-admin/dashboard-admin.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
+import { FoodsComponent } from './components/foods/foods.component';
+import { CreateFoodComponent } from './components/create-food/create-food.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
     NotFoundComponent,
     DashboardPartnerComponent,
     DashboardAdminComponent,
-    InvoiceComponent
+    InvoiceComponent,
+    FoodsComponent,
+    CreateFoodComponent
 
   ],
   imports: [

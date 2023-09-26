@@ -12,6 +12,8 @@ import { OrderComponent } from './components/order/order.component';
 import { DashboardPartnerComponent } from './components/dashboardpartner/dashboard-partner/dashboard-partner.component';
 import { DashboardAdminComponent } from './components/dashboardadmin/dashboard-admin/dashboard-admin.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
+import { FoodsComponent } from './components/foods/foods.component';
+import { CreateFoodComponent } from './components/create-food/create-food.component';
 
 const routes: Routes = [
   {path:"dasboard",component:DashboardComponent,canActivate:[AuthGuard],data: { roles: ['DEFAULT'] }},
@@ -19,6 +21,8 @@ const routes: Routes = [
   {path:"dasboard_admin",component:DashboardAdminComponent,canActivate:[AuthGuard],data: { roles: ['ADMIN']}},
   {path:"restaurants",component:RestaurantsComponent,canActivate:[AuthGuard],data: { roles: ['ADMIN']} },
   
+  {path:"list-foods",component:FoodsComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
+  {path:"create-food",component:CreateFoodComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"order",component:OrderComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"login",component:LoginComponent},
   {path:"invoice/:orderId",component:InvoiceComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
