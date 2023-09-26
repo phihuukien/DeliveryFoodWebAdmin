@@ -10,7 +10,7 @@ import { FoodService } from 'src/app/services/foods/food.service';
 })
 export class FoodsComponent implements OnInit {
   restaurantId!: string;
-  foods:any=Food;
+  foods:Food[] =[];
   constructor(private cookieService: CookieService, private foodService: FoodService) {
   }
   ngOnInit(): void {
