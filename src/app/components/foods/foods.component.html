@@ -26,18 +26,20 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                   <div class="card-header">
-                    <div class="row d-flex justify-content-between">
-                        <div class="col-lg-6 col-md-6 col-sm-5 flex-inline d-flex">
-                            <input type="search" class="form-control w-50" placeholder="Search..." name="search" id="search">
-                            <button type="button" class="button w-25 form-control bg-gradient-primary">Search</button>
+                    <div class="card-header">
+                        <div class="row d-flex justify-content-between">
+                            <div class="col-lg-6 col-md-6 col-sm-5 flex-inline d-flex">
+                                <input type="search" class="form-control w-50" placeholder="Search..." name="search"
+                                    id="search">
+                                <button type="button"
+                                    class="button w-25 form-control bg-gradient-primary">Search</button>
+                            </div>
+                            <div class="col-lg-2 col-3 col-sm-2">
+                                <a [routerLink]="['/create-food']" class="btn form-control bg-primary">Add</a>
+                            </div>
                         </div>
-                        <div class="col-lg-2 col-3 col-sm-2">
-                            <a  [routerLink]="['/create-food']"  class="btn form-control bg-primary">Add</a>
-                        </div>
-                    </div>         
-                   </div>
-                    
+                    </div>
+
                     <div class="card-body">
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
@@ -49,21 +51,22 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody >                               
+                            <tbody>
                                 <tr *ngFor="let f of foods">
                                     <td>1</td>
                                     <td>{{f.name}}</td>
                                     <td>{{f.price}}</td>
                                     <td>{{f.image}}</td>
                                     <td>
-                                        <button type="button" class="btn btn-block bg-gradient-primary btn-sm">Detail</button>
-                                        <button type="button" class="btn btn-block bg-gradient-danger btn-sm">Delete</button>
+                                        <button type="button"
+                                            class="btn btn-block bg-gradient-primary btn-sm">Detail</button>
+                                        <button type="button"
+                                            class="btn btn-block bg-gradient-danger btn-sm">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    
                 </div>
                 <!-- /.card -->
                 <!-- /.card -->
