@@ -77,14 +77,14 @@
                             <ul class="pagination pagination-sm m-0 float-right">
 
                                 <li class="page-item" *ngIf=" page > 1"><a class="page-link" style="cursor: pointer;"
-                                        (click)="getOrdersAll(textsearch,page - 1)">«</a></li>
+                                        (click)="getFoodsAll(textsearch,page - 1)">«</a></li>
 
                                 <li class="page-item" *ngFor="let key of [].constructor(totalPages); index as i"><a
                                         class="page-link" [ngClass]="page ==  i+1 ? 'checked_page' : ''"
-                                        style="cursor: pointer;" (click)="getOrdersAll(textsearch,i+1)">{{i+1}}</a></li>
+                                        style="cursor: pointer;" (click)="getFoodsAll(textsearch,i+1)">{{i+1}}</a></li>
 
                                 <li class="page-item" *ngIf=" page <  totalPages "><a class="page-link"
-                                        style="cursor: pointer;" (click)="getOrdersAll(textsearch,page + 1)">
+                                        style="cursor: pointer;" (click)="getFoodsAll(textsearch,page + 1)">
                                         &raquo;</a></li>
                             </ul>
                         </div>

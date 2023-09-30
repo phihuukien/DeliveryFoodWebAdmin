@@ -49,7 +49,7 @@ export class FoodsComponent implements OnInit {
   search() {
     this.getAll();
   }
-  getOrdersAll(textsearch:any,page:number) {
+  getFoodsAll(textsearch:any,page:number) {
     this.http
       .get(
         'http://localhost:7090/api/food/getAllFoods/' +
