@@ -37,7 +37,7 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="exampleInputEmail1" >Food Name</label>
-                  <input type="text" class="form-control" placeholder="Enter Name" formControlName="foodname">
+                  <input type="text" class="form-control" placeholder="Enter Name" formControlName="name">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Price</label>
@@ -52,7 +52,7 @@
                 <div class="form-group">
                   <label>Category</label>
                   <select  class="form-control select2" formControlName="category" style="width: 100%;">
-                    <option *ngFor="let item of lsttag" value="{{item.id}}">{{item.name}}</option>
+                    <option *ngFor="let item of lsttag" value="{{item.name}}">{{item.name}}</option>
                   </select>
                 </div>
                 <div class="form-group imgNews">

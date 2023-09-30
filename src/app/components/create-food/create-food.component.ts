@@ -38,7 +38,7 @@ export class CreateFoodComponent implements  OnInit{
    
   }
   form: FormGroup = new FormGroup({
-    foodname: new FormControl('', [Validators.required]),
+    name: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
     ingredients: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
