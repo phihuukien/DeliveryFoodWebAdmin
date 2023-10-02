@@ -7,5 +7,7 @@ export const GlobalVariable = Object.freeze({
     GET_ORDER_TODAY:"partner_order/getOrder_today/",
     GET_ORDER_ALL:"partner_order/getOrder_all/",
     GET_ORDER_DETAIL:"partner_order/get_order_detail/",
+    GET_REVIEW:"reviews/getAll/",
+    DELETE_REVIEW:"reviews/delete/"
     //... more of your variables
 });

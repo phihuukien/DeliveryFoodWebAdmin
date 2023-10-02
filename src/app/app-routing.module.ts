@@ -12,6 +12,7 @@ import { OrderComponent } from './components/order/order.component';
 import { DashboardPartnerComponent } from './components/dashboardpartner/dashboard-partner/dashboard-partner.component';
 import { DashboardAdminComponent } from './components/dashboardadmin/dashboard-admin/dashboard-admin.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
+import { ReviewComponent } from './components/review/review.component';
 
 const routes: Routes = [
   {path:"dasboard",component:DashboardComponent,canActivate:[AuthGuard],data: { roles: ['DEFAULT'] }},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path:"register",component:RegisterComponent},
   {path:"choose_restaurant",component:ChooseRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"create_restaurant",component:CreateRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
+  {path:"review",component:ReviewComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"",redirectTo:"dasboard",pathMatch:"prefix"},
 
 ];

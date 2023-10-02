@@ -22,6 +22,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { DashboardPartnerComponent } from './components/dashboardpartner/dashboard-partner/dashboard-partner.component';
 import { DashboardAdminComponent } from './components/dashboardadmin/dashboard-admin/dashboard-admin.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
+import { ReviewComponent } from './components/review/review.component';
 
 @NgModule({
   declarations: [
@@ -40,21 +41,23 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
     NotFoundComponent,
     DashboardPartnerComponent,
     DashboardAdminComponent,
-    InvoiceComponent
-
+    InvoiceComponent,
+    ReviewComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true
-  }],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
