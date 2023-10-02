@@ -66,17 +66,24 @@
                   <td>{{r.type}}</td>
                   <td>{{r.distance}} </td>
                   <td>{{r.times}} </td>
-                  <td> 
-                     <button routerLink="/updateFood/{{r.id}}" type="button" class="btn btn-block bg-gradient-primary btn-sm">
-                    Update
-                </button>
-                <button routerLink="/detailFood/{{r.id}}" type="button" class="btn btn-block bg-gradient-primary btn-sm mx-1">
-                    Detail
-                </button>
-                <button onclick="return confirm('Do you want to delete?')" type="button" class="btn btn-block bg-gradient-danger btn-sm">
-                    Delete
-                </button>
-              </td>
+                  <td style="display: flex;">
+                    <div class="dropdown">
+                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-cogs"></i>
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <button  routerLink="/updateRes/{{r.id}}" type="button" class="dropdown-item">
+                          <i class="fa-solid fa-pen"></i> Update
+                      </button>
+                      <button routerLink="/detailRes/{{r.id}}" type="button" class="dropdown-item">
+                          Detail
+                      </button>
+                      <button onclick="return confirm('Do you want to delete?')" type="button" class="dropdown-item">
+                          Delete
+                      </button>
+                      </div>
+                    </div>
+                 </td>
                 </tr>
               </tbody>
             </table>

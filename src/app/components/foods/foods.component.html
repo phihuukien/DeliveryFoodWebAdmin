@@ -46,11 +46,11 @@
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>STT</th>
-                                    <th>Name</th>
-                                    <th>price</th>
-                                    <th>image</th>
-                                    <th>Actions</th>
+                                    <th class="col-1">STT</th>
+                                    <th class="col-4">Name</th>
+                                    <th class="col-3">price</th>
+                                    <th class="col-3">image</th>
+                                    <th class="col-1">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,18 +58,26 @@
                                     <td>{{ i + 1 }}</td>
                                     <td>{{ f.name }}</td>
                                     <td>{{ f.price }}</td>
-                                    <td>{{ f.image }}</td>
-                                    <td class="d-flex">
-                                        <button routerLink="/updateFood/{{f.id}}" type="button" class="btn btn-block bg-gradient-primary btn-sm">
-                                            Update
-                                        </button>
-                                        <button routerLink="/detailFood/{{f.id}}" type="button" class="btn btn-block bg-gradient-primary btn-sm mx-1">
-                                            Detail
-                                        </button>
-                                        <button onclick="return confirm('Do you want to delete?')" type="button" class="btn btn-block bg-gradient-danger btn-sm">
-                                            Delete
-                                        </button>
-                                    </td>
+                                    <td><img style="border-radius:5px;    height: 80px;
+                                        width: 80px;" src="{{imagesApiUrl}}/gallery/square/{{f.image}}.png" class="img-circle elevation-2" alt="User Image"></td>
+                                    <td style="display: flex;">
+                                        <div class="dropdown">
+                                          <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-cogs"></i>
+                                          </button>
+                                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <button  routerLink="/updateFood/{{f.id}}" type="button" style="color: steelblue;" class="dropdown-item">
+                                            <i class="fa fa-cloud-upload" aria-hidden="true"></i> Update
+                                          </button>
+                                          <button routerLink="/detailFood/{{f.id}}" type="button" style="color: olivedrab;" class="dropdown-item">
+                                            <i class="fa fa-info-circle" aria-hidden="true"></i> Detail
+                                          </button>
+                                          <button onclick="return confirm('Do you want to delete?')" type="button" style="color: red;" class="dropdown-item">
+                                            <i class="fa fa-trash" aria-hidden="true"></i> Delete
+                                          </button>
+                                          </div>
+                                        </div>
+                                     </td>
                                 </tr>
                             </tbody>
                         </table>

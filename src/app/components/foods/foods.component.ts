@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { GlobalVariable } from 'src/apiGlobal';
 import { Food } from 'src/app/Models/Food';
 
 @Component({
@@ -23,6 +24,7 @@ export class FoodsComponent implements OnInit {
   ) {
     this.restaurantId = this.cookieService.get('restaurantId');
   }
+  imagesApiUrl = GlobalVariable.IMAGES_API_URL
   ngOnInit(): void {
     this.getAll();
   }

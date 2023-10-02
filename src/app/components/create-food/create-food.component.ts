@@ -30,7 +30,7 @@ export class CreateFoodComponent implements  OnInit{
         }
       });
     }
-    this.http.get("http://localhost:7090/api/Tags").subscribe((x) => {
+    this.http.get("http://localhost:7090/api/CategoriesRestaurants/getAllCatRes/"+this.restaurantId).subscribe((x) => {
       
       this.lsttag = x
       this.lsttag = this.lsttag.data
@@ -53,6 +53,7 @@ export class CreateFoodComponent implements  OnInit{
     this.http.post("http://localhost:7090/api/food/addFood",this.form.value).subscribe((x) => {
       this.message = x
         console.log(this.message.message)
+      this.router.navigate(['list-foods']);
     });
   }
 }
