@@ -10,5 +10,6 @@ export const GlobalVariable = Object.freeze({
     GET_ORDER_PENDING:"partner_order/get-order-pending/",
     GET_ORDER_WAITING:"partner_order/get-order-waiting/",
     UPDATE_ORDER_STATUS:"partner_order/update_order_status/",
+    FOOD:"food/getAllFoods",
     //... more of your variables
 });
