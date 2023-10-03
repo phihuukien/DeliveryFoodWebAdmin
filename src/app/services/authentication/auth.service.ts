@@ -32,6 +32,9 @@ export class AuthService {
   };
   logout() {
     this.cookieService.delete('token');
+    this.cookieService.delete('restaurantId');
+    this.cookieService.delete('img');
+    this.cookieService.delete('restaurantname');
   };
   isTokenExpired():boolean{
     const jwtHelper = new JwtHelperService();
