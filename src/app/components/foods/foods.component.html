@@ -46,33 +46,35 @@
                         <table id="example2" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th class="col-1">STT</th>
-                                    <th class="col-4">Name</th>
-                                    <th class="col-3">price</th>
-                                    <th class="col-3">image</th>
-                                    <th class="col-1">Actions</th>
+                                    <th class="col-1"  class="align-middle text-center">STT</th>
+                                    <th class="col-3"  class="align-middle text-center">Name</th>
+                                    <th class="col-2"  class="align-middle text-center">Price</th>
+                                    <th class="col-2"  class="align-middle text-center">Category</th>
+                                    <th class="col-2"  class="align-middle text-center">image</th>
+                                    <th class="col-1"  class="align-middle text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr *ngFor="let f of foods; index as i">
-                                    <td>{{ i + 1 }}</td>
-                                    <td>{{ f.name }}</td>
-                                    <td>{{ f.price }}</td>
-                                    <td><img style="border-radius:5px;    height: 80px;
+                                    <td  class="align-middle text-center">{{ i + 1 }}</td>
+                                    <td  class="align-middle text-center">{{ f.name }}</td>
+                                    <td class="align-middle text-center">{{ f.price }}</td>
+                                    <td class="align-middle text-center">{{ f.category }}</td>
+                                    <td  class="align-middle text-center"><img style="border-radius:5px;    height: 80px;
                                         width: 80px;" src="{{imagesApiUrl}}/gallery/square/{{f.image}}.png" class="img-circle elevation-2" alt="User Image"></td>
-                                    <td style="display: flex;">
-                                        <div class="dropdown">
+                                    <td class="align-middle text-center">
+                                        <div class="dropdown dropleft">
                                           <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fas fa-cogs"></i>
                                           </button>
                                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <button  routerLink="/updateFood/{{f.id}}" type="button" style="color: steelblue;" class="dropdown-item">
+                                            <button  routerLink="/update-food/{{f.id}}/{{1}}" type="button" style="color: steelblue;" class="dropdown-item">
                                             <i class="fa fa-cloud-upload" aria-hidden="true"></i> Update
                                           </button>
-                                          <button routerLink="/detailFood/{{f.id}}" type="button" style="color: olivedrab;" class="dropdown-item">
+                                          <button routerLink="/update-food/{{f.id}}/{{2}}" type="button" style="color: olivedrab;" class="dropdown-item">
                                             <i class="fa fa-info-circle" aria-hidden="true"></i> Detail
                                           </button>
-                                          <button onclick="return confirm('Do you want to delete?')" type="button" style="color: red;" class="dropdown-item">
+                                          <button (click)="delete(f.id)" onclick="return confirm('Do you want to delete?')" type="button" style="color: red;" class="dropdown-item">
                                             <i class="fa fa-trash" aria-hidden="true"></i> Delete
                                           </button>
                                           </div>

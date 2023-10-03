@@ -25,6 +25,7 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
 import { FoodsComponent } from './components/foods/foods.component';
 import { CreateFoodComponent } from './components/create-food/create-food.component';
 import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
+import { UpdateFoodComponent } from './components/update-food/update-food.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { ListRestaurantsComponent } from './components/list-restaurants/list-res
     InvoiceComponent,
     FoodsComponent,
     CreateFoodComponent,
-    ListRestaurantsComponent
+    ListRestaurantsComponent,
+    UpdateFoodComponent
 
   ],
   imports: [

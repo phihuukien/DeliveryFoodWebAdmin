@@ -15,6 +15,7 @@ import { InvoiceComponent } from './components/invoice/invoice.component';
 import { FoodsComponent } from './components/foods/foods.component';
 import { CreateFoodComponent } from './components/create-food/create-food.component';
 import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
+import { UpdateFoodComponent } from './components/update-food/update-food.component';
 
 const routes: Routes = [
   {path:"dasboard",component:DashboardComponent,canActivate:[AuthGuard],data: { roles: ['DEFAULT'] }},
@@ -24,6 +25,7 @@ const routes: Routes = [
   
   {path:"list-foods",component:FoodsComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"create-food",component:CreateFoodComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
+  {path:"update-food/:id/:loai",component:UpdateFoodComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"list-restaurants",component:ListRestaurantsComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"create-restaurant",component:CreateRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"order",component:OrderComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},

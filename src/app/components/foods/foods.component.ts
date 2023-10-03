@@ -15,8 +15,8 @@ export class FoodsComponent implements OnInit {
   foods: Food[] = [];
   textsearch: any = '';
   page: any = 1;
-  limit: number = 3;
-  totalPages: number=1;
+  limit: number = 5;
+  totalPages: number = 1;
   constructor(
     private router: Router,
     private cookieService: CookieService,
@@ -24,7 +24,7 @@ export class FoodsComponent implements OnInit {
   ) {
     this.restaurantId = this.cookieService.get('restaurantId');
   }
-  imagesApiUrl = GlobalVariable.IMAGES_API_URL
+  imagesApiUrl = GlobalVariable.IMAGES_API_URL;
   ngOnInit(): void {
     this.getAll();
   }
@@ -32,13 +32,13 @@ export class FoodsComponent implements OnInit {
     this.http
       .get(
         'http://localhost:7090/api/food/getAllFoods/' +
-        this.restaurantId +
-        '?page=' +
-        this.page +
-        '&limit=' +
-        this.limit +
-        '&textsearch=' +
-        this.textsearch
+          this.restaurantId +
+          '?page=' +
+          this.page +
+          '&limit=' +
+          this.limit +
+          '&textsearch=' +
+          this.textsearch
       )
       .subscribe((response: any) => {
         if (response.status) {
@@ -51,17 +51,17 @@ export class FoodsComponent implements OnInit {
   search() {
     this.getAll();
   }
-  getFoodsAll(textsearch:any,page:number) {
+  getFoodsAll(textsearch: any, page: number) {
     this.http
       .get(
         'http://localhost:7090/api/food/getAllFoods/' +
-        this.restaurantId +
-        '?page=' +
-        page +
-        '&limit=' +
-        this.limit +
-        '&textsearch=' +
-        textsearch
+          this.restaurantId +
+          '?page=' +
+          page +
+          '&limit=' +
+          this.limit +
+          '&textsearch=' +
+          textsearch
       )
       .subscribe((response: any) => {
         if (response.status) {
@@ -70,7 +70,16 @@ export class FoodsComponent implements OnInit {
         }
       });
   }
-  detail(id:any){
+  detail(id: any) {}
 
+  delete(id: any) {
+    this.http
+      .delete('http://localhost:7090/api/food/deleteFood/' +id)
+      .subscribe((response: any) => {
+        if (response.status) {
+          alert(response.message);
+          this.getAll();
+        }
+      });
   }
 }

@@ -14,7 +14,7 @@ export class CreateFoodComponent implements  OnInit{
   lsttag:any ;
   restaurantId:any;
   message:any;
- 
+  fileName:any;
   constructor(private router: Router,private cookieService: CookieService,private http : HttpClient) {
     this.restaurantId = this.cookieService.get('restaurantId');
   }
@@ -41,18 +41,29 @@ export class CreateFoodComponent implements  OnInit{
     name: new FormControl('', [Validators.required]),
     price: new FormControl('', [Validators.required]),
     ingredients: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required]),
+    description: new FormControl(''),
     category: new FormControl('', [Validators.required]),
     image: new FormControl('', [Validators.required]),
     restaurantId:new FormControl(""),
   })
-
+  onFileSelected(event:any) {
+    const file:File = event.target.files[0];
+    if (file) {
+        this.fileName = file;
+    }
+}
   submit(){
-    this.form.value.restaurantId=this.restaurantId
-    console.log(this.form.value);
-    this.http.post("http://localhost:7090/api/food/addFood",this.form.value).subscribe((x) => {
+    const formData = new FormData();
+    formData.append('Name', this.form.value.name);
+    formData.append('Price', this.form.value.price);
+    formData.append('Ingredients', this.form.value.ingredients);
+    formData.append('Description', this.form.value.description);
+    formData.append('Category', this.form.value.category);
+    formData.append('Image', this.fileName);
+    formData.append('RestaurantId', this.restaurantId);
+    this.http.post("http://localhost:7090/api/food/addFood",formData).subscribe((x) => {
       this.message = x
-        console.log(this.message.message)
+        alert(this.message.message)
       this.router.navigate(['list-foods']);
     });
   }
