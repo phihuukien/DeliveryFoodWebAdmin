@@ -9,6 +9,7 @@ import { OrderService } from 'src/app/services/order/order.service';
 })
 export class InvoiceComponent implements OnInit {
   public order : any;
+  public orderDetail : any;
   constructor(private router : Router,private activeRoute: ActivatedRoute,private orderService:OrderService){
   
   }
@@ -16,9 +17,12 @@ export class InvoiceComponent implements OnInit {
     let idParams = this.activeRoute.snapshot.params['orderId'];
     this.orderService.getOrderDetail(idParams).subscribe({
       next:((response:any)=>{
+        console.log(response)
         console.log(response.data)
+        console.log(response.dataOrderDetail)
         if(response.status){
           this.order = response.data;
+          this.orderDetail = response.dataOrderDetail
          }
       }),
       error:( error =>{
