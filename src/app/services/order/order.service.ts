@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { GlobalVariable } from 'src/apiGlobal';
 import { Orders } from 'src/app/Models/Orders';
 const api = GlobalVariable.BASE_API_URL+GlobalVariable.GET_ORDER_ALL;
 const api_order_dettail = GlobalVariable.BASE_API_URL+GlobalVariable.GET_ORDER_DETAIL;
+const api_order_cancel = GlobalVariable.BASE_API_URL+GlobalVariable.ORDER_CANCEL;
+const api_order_delete = GlobalVariable.BASE_API_URL+GlobalVariable.ORDER_DELETE;
 @Injectable({
   providedIn: 'root'
 })
@@ -47,4 +49,15 @@ export class OrderService {
   getOrderDetail(orderId:string){
     return this.http.get<Array<any>>(api_order_dettail+this.cookieService.get('restaurantId')+"/"+orderId);
   }
+  cancelOrder(orderCancel:any):Observable<any>{
+    return this.http.post(api_order_cancel,orderCancel).pipe(map((res: any) => {
+      return res;
+    }));
+  }
+  deleteOrder(id:any):Observable<any>{
+    return this.http.delete(api_order_delete+id).pipe(map((res: any) => {
+      return res;
+    }));
+  }
+
 }
