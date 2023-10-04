@@ -1,43 +1,41 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link" style="line-height: 2.8;">
+    <a href="index3.html" class="brand-link" style="line-height: 2.8">
         <img src="assets/dist/img/logoF.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-            style="opacity: .8;max-height: 54px;">
-        <span class="brand-text font-weight-light" style="font-family: cursive;">Delivery Food</span>
+            style="opacity: 0.8; max-height: 54px" />
+        <span class="brand-text font-weight-light" style="font-family: cursive">Delivery Food</span>
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img style="border-radius:5px;    height: 58px;
-                width: 4.1rem;" src="{{imagesApiUrl}}/logo/{{img}}.png" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#" class="d-block" style=" color: #ff761c;">{{username}}</a>
-                <a href="#" class="d-block">{{restaurantName}}</a>
-            </div>
+            <a routerLink="/detail-restaurant" style="display: flex;">
+                <div class="image">
+                    <img style="border-radius: 5px; height: 58px; width: 4.1rem"
+                        src="{{ imagesApiUrl }}/logo/{{ img }}.png" class="img-circle elevation-2" alt="User Image" />
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block" style="color: #ff761c">{{ username }}</a>
+                    <a href="#" class="d-block">{{ restaurantName }}</a>
+                </div>
+            </a>
         </div>
 
         <!-- SidebarSearch Form -->
-        
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                
                 <li class="nav-item nav-item-customer">
                     <a [routerLink]="['/dasboard_partner']" class="nav-link active dashboard">
                         <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Dashboard
-                        </p>
+                        <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-item  nav-item-customer" *ngIf="role == 'ADMIN'">
-                    <a href="#" class="nav-link ">
+                <li class="nav-item nav-item-customer" *ngIf="role == 'ADMIN'">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Restaunrants Management
@@ -46,7 +44,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a [routerLink]="['/restaurants']" class="nav-link  pl-1-custom">
+                            <a [routerLink]="['/restaurants']" class="nav-link pl-1-custom">
                                 <p>Restaurants All</p>
                             </a>
                         </li>
@@ -54,43 +52,21 @@
                 </li>
 
                 <li class="nav-item nav-item-customer" *ngIf="role == 'PARTNER'">
-                    <a  class="nav-link">
+                    <a class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
-                           Restaurants 
+                            Foods Management
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a [routerLink]="['/list-restaurants']" class="nav-link  pl-1-custom">
-                                <p>Restaunrants</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a routerLink="/create-restaurant"  class="nav-link  pl-1-custom">
-                                <p>Add Restaunrants</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="nav-item nav-item-customer" *ngIf="role == 'PARTNER'">
-                    <a  class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
-                        <p>
-                           Foods Management
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a routerLink="/list-foods" class="nav-link  pl-1-custom">
+                            <a routerLink="/list-foods" class="nav-link pl-1-custom">
                                 <p>Foods All</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a routerLink="/create-food"  class="nav-link  pl-1-custom">
+                            <a routerLink="/create-food" class="nav-link pl-1-custom">
                                 <p>More Foods</p>
                             </a>
                         </li>
@@ -101,32 +77,28 @@
                     <a href="javascript:void(0)" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
-                           Orders Management
+                            Orders Management
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a  [routerLink]="['/order']"  class="nav-link pl-1-custom">
-                                
+                            <a [routerLink]="['/order']" class="nav-link pl-1-custom">
                                 <p>Orders All</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a   class="nav-link  pl-1-custom">
-                                
+                            <a class="nav-link pl-1-custom">
                                 <p>Cancelled Orders</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a   class="nav-link  pl-1-custom">
+                            <a class="nav-link pl-1-custom">
                                 <p>Return/Refund</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-
-
             </ul>
         </nav>
     </div>

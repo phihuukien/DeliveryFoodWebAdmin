@@ -48,9 +48,10 @@
                                 <tr>
                                     <th class="col-1"  class="align-middle text-center">STT</th>
                                     <th class="col-3"  class="align-middle text-center">Name</th>
+                                    <th class="col-1"  class="align-middle text-center">Image</th>
                                     <th class="col-2"  class="align-middle text-center">Price</th>
                                     <th class="col-2"  class="align-middle text-center">Category</th>
-                                    <th class="col-2"  class="align-middle text-center">image</th>
+                                    <th class="col-1"  class="align-middle text-center">Status</th>
                                     <th class="col-1"  class="align-middle text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -58,10 +59,19 @@
                                 <tr *ngFor="let f of foods; index as i">
                                     <td  class="align-middle text-center">{{ i + 1 }}</td>
                                     <td  class="align-middle text-center">{{ f.name }}</td>
+                                    <td  class="align-middle text-center">
+                                        <img style="border-radius:5px;    height: 80px;
+                                        width: 80px;" src="{{imagesApiUrl}}/gallery/square/{{f.image}}.png" class="img-circle elevation-2" alt="User Image"></td>
                                     <td class="align-middle text-center">{{ f.price }}</td>
                                     <td class="align-middle text-center">{{ f.category }}</td>
-                                    <td  class="align-middle text-center"><img style="border-radius:5px;    height: 80px;
-                                        width: 80px;" src="{{imagesApiUrl}}/gallery/square/{{f.image}}.png" class="img-circle elevation-2" alt="User Image"></td>
+                                    <td class="align-middle text-center"><div class="form-group clearfix">
+                                        <div class="icheck-primary d-inline">
+                                          <input type="checkbox" id="{{ i  }}" name="{{i}}" [ngModel]="isChecked(f.status)" (change)="updateStatus($event,f)">
+                                          <label for="{{ i }}">
+                                            Show/Hiden
+                                          </label>
+                                        </div>
+                                      </div></td>
                                     <td class="align-middle text-center">
                                         <div class="dropdown dropleft">
                                           <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

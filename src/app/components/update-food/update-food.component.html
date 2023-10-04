@@ -13,12 +13,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Create Foods</h1>
+          <h1 class="m-0">{{title}}</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a routerLink="/list-foods">Foods</a></li>
-            <li class="breadcrumb-item active">Create Food</li>
+            <li class="breadcrumb-item active">{{title}}</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -31,7 +31,8 @@
     <div class="container-fluid">
       <div class="card card-primary">
         <!-- form start -->
-        <form action="post" [formGroup]="form" class="signin-form" (submit)="submit()">
+
+        <form action="post" [formGroup]="form" class="signin-form" (submit)="submit()" *ngIf="loai==1">
           <div class="card-body">
             <div class="row">
               <div class="col-6">
@@ -94,6 +95,56 @@
           <!-- /.card-body -->
           <div class="card-footer">
             <button type="submit" [disabled]='!form.valid' class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+        <form  [formGroup]="form" *ngIf="loai==2">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="exampleInputEmail1" >Food Name</label>
+                  <input type="text" class="form-control" placeholder="Enter Name" [ngModel]="data.name" formControlName="name" readonly>
+                  
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Price</label>
+                  <input type="number" class="form-control" placeholder="Enter Price" [ngModel]="data.price" formControlName="price" readonly>
+                  
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Ingredients</label>
+                    <textarea type="text" class="form-control" placeholder="Enter Ingredients" style="height: 190px;" formControlName="ingredients" [ngModel]="data.ingredients" readonly></textarea>
+                    
+                  </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Category</label>
+                  
+                  <input type="text" class="form-control" placeholder="Enter Price" [ngModel]="data.category" formControlName="category" readonly>
+                  
+                  
+                </div>
+                <div class="form-group imgNews">
+                    <label asp-for="picture" class="floating-label"> Picture</label>
+                    <label for="image" style="width:100%; text-align: center;">
+                        <img alt="" 
+                             style="height: 270px; object-fit: cover;"
+                             src="{{imagesApiUrl}}/gallery/square/{{data.image}}.png">
+                    </label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="exampleInputPassword1">Description</label>
+              <textarea type="text" class="form-control" placeholder="Enter Description" style="height: 130px;" formControlName="description" [ngModel]="data.description" readonly></textarea>
+              
+            </div>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer">
+            <a type="button" routerLink="/list-foods" class="btn btn-primary">Back</a>
           </div>
         </form>
       </div>

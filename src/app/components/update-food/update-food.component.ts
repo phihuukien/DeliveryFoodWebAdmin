@@ -19,6 +19,7 @@ export class UpdateFoodComponent {
   idParams:any;
   loai:any;
   data:any;
+  title:string='';
   imagesApiUrl = GlobalVariable.IMAGES_API_URL;
   constructor(
     private router: Router,
@@ -31,6 +32,11 @@ export class UpdateFoodComponent {
   ngOnInit(): void {
     this.idParams = this.activeRoute.snapshot.params['id'];
     this.loai =  this.activeRoute.snapshot.params['loai'];
+    if (this.loai==1){
+      this.title = "Update Food"
+    }else{
+      this.title = "Detail Food"
+    }
     this.getOne();
     const img: HTMLInputElement | null =
       document.querySelector<HTMLInputElement>('#image');

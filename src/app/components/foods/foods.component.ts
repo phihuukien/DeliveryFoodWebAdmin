@@ -17,6 +17,8 @@ export class FoodsComponent implements OnInit {
   page: any = 1;
   limit: number = 5;
   totalPages: number = 1;
+  food:any ;
+  message:any;
   constructor(
     private router: Router,
     private cookieService: CookieService,
@@ -51,6 +53,43 @@ export class FoodsComponent implements OnInit {
   search() {
     this.getAll();
   }
+  
+  isChecked(status: number) {
+    if (status == 1) {
+      return true;
+    }else if (status ==2){
+      return false;
+    } else{
+      return false;
+    }
+  }
+  updateStatus(e:any,f:any){
+   console.log(f);
+    const formData = new FormData();
+    formData.append('Id', f.id);
+    formData.append('Name', f.name);
+    formData.append('Price', f.price);
+    formData.append('Ingredients', f.ingredients);
+    formData.append('Description', f.description);
+    formData.append('Category', f.category);
+    formData.append('Image',f.image);
+    formData.append('RestaurantId', this.restaurantId);
+    if (e.target.checked){
+      var status:any = 1
+      formData.append('Status', status);
+    }else{
+      var status:any = 2
+      formData.append('Status', status);
+    }
+    console.log(e.target.checked);
+    this.http
+    .post('http://localhost:7090/api/food/updateFood', formData)
+    .subscribe((x) => {
+      this.message = x;
+      alert(this.message.message);
+    });
+  }
+
   getFoodsAll(textsearch: any, page: number) {
     this.http
       .get(
