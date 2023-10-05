@@ -35,7 +35,7 @@ export class ChooseRestaurantComponent implements OnInit {
   }
  
 
-  activeRestaurant(name: string, id: string, img :string) {
+  activeRestaurant(name: string, id: string, img :string, username :string) {
     const current = document.getElementsByClassName("active");
     if (current.length > 0) {
       (current[0] as HTMLElement).className = (current[0] as HTMLElement).className.replace(" active", "");
@@ -45,5 +45,6 @@ export class ChooseRestaurantComponent implements OnInit {
     this.cookieService.set('restaurantId', id);
     this.cookieService.set('restaurantname', name);
     this.cookieService.set('img', img);
+    this.cookieService.set('username', username);
   }
 }

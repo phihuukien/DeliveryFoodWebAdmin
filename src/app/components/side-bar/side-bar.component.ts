@@ -21,9 +21,11 @@ export class SideBarComponent implements OnInit {
   ngOnInit(): void {
     this.role = this.authService.decodedToken().role
     this.username = this.authService.decodedToken().name
-    this.restaurantName = this.cookie.get("restaurantname")
-  
-    this.img = this.cookie.get("img")
+    if( this.role == "PARTNER"){
+      this.restaurantName = this.cookie.get("restaurantname")
+      this.img = this.cookie.get("img")
+    }
+    
   }
 
 }

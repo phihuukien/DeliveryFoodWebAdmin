@@ -10,7 +10,7 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex" *ngIf="role == 'PARTNER'">
             <div class="image">
                 <img style="border-radius:5px;    height: 58px;
                 width: 4.1rem;" src="{{imagesApiUrl}}/logo/{{img}}.png" class="img-circle elevation-2" alt="User Image">
@@ -18,6 +18,16 @@
             <div class="info">
                 <a href="#" class="d-block" style=" color: #ff761c;">{{username}}</a>
                 <a href="#" class="d-block">{{restaurantName}}</a>
+            </div>
+        </div>
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex" *ngIf="role == 'ADMIN'">
+            <div class="image">
+                <img style="border-radius:5px;    height: 58px;
+                width: 4.1rem;" src="assets/dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block" style=" color: #ff761c;">{{username}}</a>
+               
             </div>
         </div>
 
@@ -57,18 +67,40 @@
                     <a  class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
+                           Restaurants 
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a [routerLink]="['/list-restaurants']" class="nav-link  pl-1-custom">
+                                <p>Restaunrants</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/create-restaurant"  class="nav-link  pl-1-custom">
+                                <p>Add Restaunrants</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item nav-item-customer" *ngIf="role == 'PARTNER'">
+                    <a  class="nav-link">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>
                            Foods Management
                             <i class="fas fa-angle-left right"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a  class="nav-link  pl-1-custom">
+                            <a routerLink="/list-foods" class="nav-link  pl-1-custom">
                                 <p>Foods All</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a    class="nav-link  pl-1-custom">
+                            <a routerLink="/create-food"  class="nav-link  pl-1-custom">
                                 <p>More Foods</p>
                             </a>
                         </li>

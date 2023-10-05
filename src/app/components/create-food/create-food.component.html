@@ -1,0 +1,87 @@
+<!-- Preloader -->
+
+<app-header></app-header>
+<app-side-bar></app-side-bar>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+
+
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Create Foods</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a routerLink="/list-foods">Foods</a></li>
+            <li class="breadcrumb-item active">Create Food</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="card card-primary">
+        <!-- form start -->
+        <form action="post" [formGroup]="form" class="signin-form" (submit)="submit()">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="exampleInputEmail1" >Food Name</label>
+                  <input type="text" class="form-control" placeholder="Enter Name" formControlName="name">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Price</label>
+                  <input type="number" class="form-control" placeholder="Enter Price" formControlName="price">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Ingredients</label>
+                    <textarea type="text" class="form-control" placeholder="Enter Ingredients" style="height: 190px;" formControlName="ingredients"></textarea>
+                  </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label>Category</label>
+                  <select  class="form-control select2" formControlName="category" style="width: 100%;">
+                    <option *ngFor="let item of lsttag" value="{{item.name}}">{{item.name}}</option>
+                  </select>
+                </div>
+                <div class="form-group imgNews">
+                    <label asp-for="picture" class="floating-label">News Picture</label>
+                    <label for="image" style="width:100%; text-align: center;">
+                        <img alt=""
+                             style="height: 270px; object-fit: cover;"
+                             src="https://www.kunimi-media.jp/wordpress/wp-content/themes/keni8-child/images/no-image.jpg">
+                    </label>
+                    <input formControlName="image" type="file" name="image" id="image" hidden />
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <label for="exampleInputPassword1">Description</label>
+              <textarea type="number" class="form-control" placeholder="Enter Description" style="height: 130px;" formControlName="description"></textarea>
+            </div>
+          </div>
+          <!-- /.card-body -->
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<app-footer></app-footer>
+<!-- ./wrapper -->
