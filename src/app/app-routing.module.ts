@@ -16,6 +16,7 @@ import { ReviewComponent } from './components/review/review.component';
 import { FoodsComponent } from './components/foods/foods.component';
 import { CreateFoodComponent } from './components/create-food/create-food.component';
 import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
+import { CateRestaurantComponent } from './components/cate-restaurant/cate-restaurant.component';
 
 const routes: Routes = [
   {path:"dasboard",component:DashboardComponent,canActivate:[AuthGuard],data: { roles: ['DEFAULT'] }},
@@ -35,6 +36,7 @@ const routes: Routes = [
   {path:"choose_restaurant",component:ChooseRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"create_restaurant",component:CreateRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"review",component:ReviewComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
+  {path:"cate-restaurant",component:CateRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"",redirectTo:"dasboard",pathMatch:"prefix"},
 
 ];

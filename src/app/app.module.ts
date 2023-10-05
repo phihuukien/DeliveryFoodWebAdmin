@@ -26,6 +26,7 @@ import { FoodsComponent } from './components/foods/foods.component';
 import { CreateFoodComponent } from './components/create-food/create-food.component';
 import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
 import { ReviewComponent } from './components/review/review.component';
+import { CateRestaurantComponent } from './components/cate-restaurant/cate-restaurant.component';
 
 @NgModule({
   declarations: [
@@ -47,8 +48,8 @@ import { ReviewComponent } from './components/review/review.component';
     InvoiceComponent,
     FoodsComponent,
     CreateFoodComponent,
-    ListRestaurantsComponent
-
+    ListRestaurantsComponent,
+    CateRestaurantComponent,
     InvoiceComponent,
     ReviewComponent,
   ],

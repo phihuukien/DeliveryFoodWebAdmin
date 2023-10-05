@@ -1,0 +1,134 @@
+<!-- Preloader -->
+
+<app-header></app-header>
+<app-side-bar></app-side-bar>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Categories</h1>
+        </div>
+      </div>
+    </div>
+    <!-- /.container-fluid -->
+  </section>
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-4">
+        <div class="card-body">
+          <div class="card card-primary">
+
+            <form  action="post" [formGroup]="CategoryF" class="signin-form" (submit)="onInsertCate()" *ngIf="isPost">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Name</label>
+                  <input type="text" class="form-control" placeholder="Name"  formControlName="name" />
+                </div>
+                <div>
+                  <label>Status</label>
+                </div>
+                <div class="form-group clearfix">
+                  <div class="icheck-primary d-inline mr-2">
+                    <input type="radio" id="radioPrimary1" name="status"  formControlName="status"   [value]="1">
+                    <label for="radioPrimary1">
+                      Show
+                    </label>
+                  </div>
+                  <div class="icheck-primary d-inline">
+                    <input type="radio" id="radioPrimary2" name="status"  formControlName="status" [value]="2">
+                    <label for="radioPrimary2">
+                      Hide
+                    </label>
+                  </div>
+                
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <button type="submit"  [disabled]="CategoryF.invalid" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+
+            <form  action="put" [formGroup]="CategoryFUp" class="signin-form" (submit)="onUpdate()"  *ngIf="!isPost">
+              <div class="card-body">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Name Update</label>
+                  <input type="text" class="form-control" placeholder="Name" [value]="category.name" formControlName="name" />
+                </div>
+                <div>
+                  <label>Status</label>
+                </div>
+                <div class="form-group clearfix">
+                  <div class="icheck-primary d-inline mr-2">
+                    <input type="radio" id="radioPrimary1" name="status"   [(ngModel)]="status" >
+                    <label for="radioPrimary1">
+                      Show
+                    </label>
+                  </div>
+                  <div class="icheck-primary d-inline">
+                    <input type="radio" id="radioPrimary2" name="status"  [(ngModel)]="status"  >
+                    <label for="radioPrimary2">
+                      Hide
+                    </label>
+                  </div>
+                
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-8">
+        <div class="card-body">
+          <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Status</th>
+
+                <th>Options</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-widget="expandable-table" aria-expanded="true" *ngFor="let item of categories;let idx = index">
+                <td>{{idx+1}}</td>
+                <td>{{item.name}}</td>
+                <td>
+                  <span class="badge badge-success" *ngIf="item.status == 1">Show</span>
+                        <span class="badge badge-info" *ngIf="item.status == 2">Hide</span>
+                </td>
+                <td>
+                  <a (click)="GetCateById(item.id)"
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title="Edit!"
+                  >
+                    <span class="badge bg-warning" style="font-size: larger;"
+                      ><i class="far fa-edit"></i></span
+                  ></a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+         
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<!-- /.row -->
+
+<!-- /.content-wrapper -->
+<app-footer></app-footer>
+<!-- ./wrapper -->

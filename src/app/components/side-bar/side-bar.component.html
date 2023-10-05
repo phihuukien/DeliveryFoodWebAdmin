@@ -39,7 +39,7 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 
                 <li class="nav-item nav-item-customer">
-                    <a [routerLink]="['/dasboard_partner']" class="nav-link active dashboard">
+                    <a [routerLink]="['/dasboard_partner']" class="nav-link dashboard">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Dashboard
@@ -63,9 +63,9 @@
                     </ul>
                 </li>
 
-                <li class="nav-item nav-item-customer" *ngIf="role == 'PARTNER'">
+                <li class="nav-item nav-item-customer menu-open" *ngIf="role == 'PARTNER'">
                     <a  class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="nav-icon fas fa-utensils"></i>
                         <p>
                            Restaurants 
                             <i class="fas fa-angle-left right"></i>
@@ -86,8 +86,17 @@
                 </li>
 
                 <li class="nav-item nav-item-customer" *ngIf="role == 'PARTNER'">
+                    <a routerLink="/cate-restaurant" class="nav-link"  style="cursor:pointer;">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                           Categories Management
+                        </p>
+                    </a>
+                </li>
+
+                <li class="nav-item nav-item-customer" *ngIf="role == 'PARTNER'">
                     <a  class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="nav-icon fas fa-pizza-slice"></i>
                         <p>
                            Foods Management
                             <i class="fas fa-angle-left right"></i>
@@ -138,7 +147,7 @@
 
                 <li class="nav-item nav-item-customer menu-open" *ngIf="role == 'PARTNER'">
                     <a href="javascript:void(0)" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="nav-icon fas fa-star"></i>
                         <p>
                            Review Management
                             <i class="fas fa-angle-left right"></i>
