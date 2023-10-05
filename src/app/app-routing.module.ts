@@ -27,6 +27,7 @@ const routes: Routes = [
   {path:"create-food",component:CreateFoodComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"update-food/:id/:loai",component:UpdateFoodComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"detail-restaurant",component:DetailRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
+  {path:"update-restaurant",component:DetailRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"create-restaurant",component:CreateRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"order",component:OrderComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"login",component:LoginComponent},
@@ -36,7 +37,6 @@ const routes: Routes = [
   {path:"choose_restaurant",component:ChooseRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"create_restaurant",component:CreateRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"",redirectTo:"dasboard",pathMatch:"prefix"},
-
 ];
 
 @NgModule({

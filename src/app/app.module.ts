@@ -26,6 +26,7 @@ import { FoodsComponent } from './components/foods/foods.component';
 import { CreateFoodComponent } from './components/create-food/create-food.component';
 import { UpdateFoodComponent } from './components/update-food/update-food.component';
 import { DetailRestaurantComponent } from './components/detail-restaurant/detail-restaurant.component';
+import { UpdateRestaurantComponent } from './components/update-restaurant/update-restaurant.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { DetailRestaurantComponent } from './components/detail-restaurant/detail
     FoodsComponent,
     CreateFoodComponent,
     UpdateFoodComponent,
-    DetailRestaurantComponent
+    DetailRestaurantComponent,
+    UpdateRestaurantComponent
 
   ],
   imports: [
