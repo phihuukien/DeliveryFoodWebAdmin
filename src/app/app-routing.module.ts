@@ -16,6 +16,7 @@ import { FoodsComponent } from './components/foods/foods.component';
 import { CreateFoodComponent } from './components/create-food/create-food.component';
 import { UpdateFoodComponent } from './components/update-food/update-food.component';
 import { DetailRestaurantComponent } from './components/detail-restaurant/detail-restaurant.component';
+import { UpdateRestaurantComponent } from './components/update-restaurant/update-restaurant.component';
 
 const routes: Routes = [
   {path:"dasboard",component:DashboardComponent,canActivate:[AuthGuard],data: { roles: ['DEFAULT'] }},
@@ -27,7 +28,7 @@ const routes: Routes = [
   {path:"create-food",component:CreateFoodComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"update-food/:id/:loai",component:UpdateFoodComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"detail-restaurant",component:DetailRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
-  {path:"update-restaurant",component:DetailRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
+  {path:"update-restaurant",component:UpdateRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"create-restaurant",component:CreateRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"order",component:OrderComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"login",component:LoginComponent},
@@ -35,7 +36,6 @@ const routes: Routes = [
   {path:"not_found",component:NotFoundComponent},
   {path:"register",component:RegisterComponent},
   {path:"choose_restaurant",component:ChooseRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
-  {path:"create_restaurant",component:CreateRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"",redirectTo:"dasboard",pathMatch:"prefix"},
 ];
 

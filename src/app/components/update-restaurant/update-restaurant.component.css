@@ -1,0 +1,11 @@
+.c-text{
+    width: 70px;
+    margin: 5px 0px;
+}
+
+.c-input{
+    text-align: end;
+    input{
+        /* width: calc(100% - 100px); */
+    }
+}

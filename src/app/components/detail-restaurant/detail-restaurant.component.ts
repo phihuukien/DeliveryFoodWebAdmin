@@ -30,7 +30,7 @@ export class DetailRestaurantComponent implements OnInit {
   getOne(){
     this.http
     .get(
-      'http://localhost:7090/api/restaurants/' +
+      'http://localhost:7090/api/restaurants/getResById/' +
         this.restaurantId
     )
     .subscribe((x) => {
