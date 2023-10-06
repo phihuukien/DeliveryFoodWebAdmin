@@ -4,22 +4,24 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { GlobalVariable } from 'src/apiGlobal';
+import { AuthService } from 'src/app/services/authentication/auth.service';
 
 @Component({
-  selector: 'app-create-restaurant',
-  templateUrl: './create-restaurant.component.html',
-  styleUrls: ['./create-restaurant.component.css']
+  selector: 'app-create-restaurant2',
+  templateUrl: './create-restaurant2.component.html',
+  styleUrls: ['./create-restaurant2.component.css']
 })
-export class CreateRestaurantComponent implements OnInit {
+export class CreateRestaurant2Component implements OnInit {
   authService: any;
   constructor(
     private router: Router,
     private activeRoute: ActivatedRoute,
     private cookieService: CookieService,
-    private http: HttpClient
+    private http: HttpClient,
+    private auth: AuthService,
   ) {
     this.restaurantId = this.cookieService.get('restaurantId');
-    this.username = this.cookieService.get('username');
+ 
   }
   form: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -29,7 +31,7 @@ export class CreateRestaurantComponent implements OnInit {
     type: new FormControl(''),
   })
   message:any;
-  username:any;
+  username =this.auth.decodedToken().name;
   restaurantId :any;
   lstTag : any=[];
   imagesApiUrl = GlobalVariable.IMAGES_API_URL;
@@ -126,8 +128,8 @@ export class CreateRestaurantComponent implements OnInit {
     console.log(this.tags)
     this.http.post("http://localhost:7090/api/restaurants/add-restaurant",formData).subscribe((x) => {
       this.message = x
-        alert(this.message.message)
+      this.router.navigate(['/choose_restaurant'])
     });
   }
-  
+
 }

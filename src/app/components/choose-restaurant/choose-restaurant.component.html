@@ -2,9 +2,9 @@
   
     <div class="list_restaurant" id="list_restaurant">
      
-        <div *ngFor="let item of restaurants"  class="restaurant {{item.name}}" (click)="activeRestaurant(item.name, item.id, item.images.poster,item.username)">
+        <div *ngFor="let item of restaurants"  class="restaurant {{item.name}}" (click)="activeRestaurant(item.name, item.id, item.images.logo,item.username)">
             <div class="Img"  >
-                <img src="{{imagesApiUrl}}/logo/{{item.images.poster}}.png" class="restaurant_img" alt="">
+                <img src="{{imagesApiUrl}}/logo/{{item.images.logo}}.png" class="restaurant_img" alt="">
             </div>
             <div class="text_restaurant">
                 <p class="mb-0">{{item.name}}</p>

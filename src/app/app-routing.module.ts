@@ -14,7 +14,10 @@ import { DashboardAdminComponent } from './components/dashboardadmin/dashboard-a
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import { FoodsComponent } from './components/foods/foods.component';
 import { CreateFoodComponent } from './components/create-food/create-food.component';
-import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
+import { UpdateFoodComponent } from './components/update-food/update-food.component';
+import { DetailRestaurantComponent } from './components/detail-restaurant/detail-restaurant.component';
+import { UpdateRestaurantComponent } from './components/update-restaurant/update-restaurant.component';
+import { CreateRestaurant2Component } from './components/create-restaurant2/create-restaurant2.component';
 
 const routes: Routes = [
   {path:"dasboard",component:DashboardComponent,canActivate:[AuthGuard],data: { roles: ['DEFAULT'] }},
@@ -24,17 +27,18 @@ const routes: Routes = [
   
   {path:"list-foods",component:FoodsComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"create-food",component:CreateFoodComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
-  {path:"list-restaurants",component:ListRestaurantsComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
+  {path:"update-food/:id/:loai",component:UpdateFoodComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
+  {path:"detail-restaurant",component:DetailRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
+  {path:"update-restaurant",component:UpdateRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"create-restaurant",component:CreateRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
+  {path:"create-new-restaurant",component:CreateRestaurant2Component,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"order",component:OrderComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"login",component:LoginComponent},
   {path:"invoice/:orderId",component:InvoiceComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"not_found",component:NotFoundComponent},
   {path:"register",component:RegisterComponent},
   {path:"choose_restaurant",component:ChooseRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
-  {path:"create_restaurant",component:CreateRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"",redirectTo:"dasboard",pathMatch:"prefix"},
-
 ];
 
 @NgModule({

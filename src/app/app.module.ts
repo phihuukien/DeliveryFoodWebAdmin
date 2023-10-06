@@ -24,7 +24,10 @@ import { DashboardAdminComponent } from './components/dashboardadmin/dashboard-a
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import { FoodsComponent } from './components/foods/foods.component';
 import { CreateFoodComponent } from './components/create-food/create-food.component';
-import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
+import { UpdateFoodComponent } from './components/update-food/update-food.component';
+import { DetailRestaurantComponent } from './components/detail-restaurant/detail-restaurant.component';
+import { UpdateRestaurantComponent } from './components/update-restaurant/update-restaurant.component';
+import { CreateRestaurant2Component } from './components/create-restaurant2/create-restaurant2.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,10 @@ import { ListRestaurantsComponent } from './components/list-restaurants/list-res
     InvoiceComponent,
     FoodsComponent,
     CreateFoodComponent,
-    ListRestaurantsComponent
+    UpdateFoodComponent,
+    DetailRestaurantComponent,
+    UpdateRestaurantComponent,
+    CreateRestaurant2Component
 
   ],
   imports: [

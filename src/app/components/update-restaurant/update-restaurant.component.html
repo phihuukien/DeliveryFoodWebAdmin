@@ -12,13 +12,13 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Create Resstaurant</h1>
+          <h1 class="m-0">Update Resstaurant</h1>
         </div>
         <!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a routerLink>Home</a></li>
-            <li class="breadcrumb-item active">Create Resstaurant</li>
+            <li class="breadcrumb-item active">Update Resstaurant</li>
           </ol>
         </div>
         <!-- /.col -->
@@ -41,7 +41,7 @@
                 <h3 class="text-primary d-inline-flex">
                   <i class="fa fa-cutlery"></i>
                   <div style="text-align: end">
-                    <input style="width: calc(100% - 30px)" formControlName="name" type="text" />
+                    <input style="width: calc(100% - 30px)" formControlName="name" [ngModel]="res.name" type="text" />
                   </div>
                 </h3>
                 <div class="text-muted">
@@ -50,7 +50,7 @@
                       <p class="text-sm">Location :</p>
                     </div>
                     <div class="c-input">
-                      <input type="text"  formControlName="location" />
+                      <input type="text" [ngModel]="res.location" formControlName="location" />
                     </div>
                   </div>
 
@@ -59,38 +59,48 @@
                       <p class="text-sm">Type :</p>
                     </div>
                     <div class="c-input">
-                      <input type="text"  formControlName="type"/>
+                      <input type="text" [ngModel]="res.type" formControlName="type"/>
                     </div>
                   </div>
                   <div class="d-inline-flex">
                     <div class="c-text">
-                      <p class="text-sm">Distance :</p>
+                      <p class="text-sm">Email :</p>
                     </div>
                     <div class="c-input">
-                      <input type="email" formControlName="distance"/>
+                      <input type="email" [ngModel]="res.distance" formControlName="distance"/>
                     </div>
                   </div>
 
                   <div class="d-inline-flex">
                     <div class="c-text">
-                      <p class="text-sm">Times :</p>
+                      <p class="text-sm">Phone :</p>
                     </div>
                     <div class="c-input">
-                      <input type="number" formControlName="time"/>
+                      <input type="number" [ngModel]="res.times" formControlName="time"/>
                     </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-6">
                     <h5 class="mt-4 text-muted">Tags :</h5>
-                    <div style="overflow-y: auto; height: 150px">
-                      <ul class="list-unstyled" *ngFor="let tag of lstTag">
+                    <div style="overflow-y: auto;">
+                      <ul class="list-unstyled" *ngFor="let tag of lstTag; index as i">
                         <li style="display: flex">
-                          <input type="checkbox" (change)="checkTag($event,tag)" /><b href class="d-block">{{tag.name}}</b>
+                          <input type="checkbox" [checked]="lstCheck[i]" (change)="checkTag($event,tag)" /><b href class="d-block">{{tag.name}}</b>
                         </li>
                       </ul>
                     </div>
                   </div>
+                  <div *ngIf="lstCategory.length >0" class="col-6 " >
+                    <h5 class="mt-4 text-muted">Categories :</h5>
+                        <div style="overflow-y: auto;">
+                        <ul class="list-unstyled"  *ngFor="let category of lstCategory  index as i">
+                            <li style="display: flex">
+                                <input type="checkbox" [checked]="lstCheckedCategory[i]" (change)="checkCate($event,category)" /><b href class="d-block">{{category.name}}</b>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 </div>
               </div>
               <div class="col-12 col-md-12 col-lg-8 order-2 order-md-2">
@@ -105,7 +115,7 @@
                               height: 247.4px;
                               object-fit: cover;
                             "
-                            src="https://www.kunimi-media.jp/wordpress/wp-content/themes/keni8-child/images/no-image.jpg" />
+                            src="{{ imagesApiUrl }}/logo/{{ res.images.logo }}.png" />
                         </label>
                         <input type="file" (change)="onFileSelected($event)" name="image" id="image" hidden />
                       </div>
@@ -121,7 +131,7 @@
                               height: 144px;
                               object-fit: cover;
                             "
-                            src="https://www.kunimi-media.jp/wordpress/wp-content/themes/keni8-child/images/no-image.jpg" />
+                            src="{{ imagesApiUrl }}/poster/{{ res.images.poster }}.png" />
                         </label>
                         <input type="file" (change)="onFileSelected1($event)" name="image1" id="image1" hidden />
                       </div>
@@ -130,14 +140,14 @@
                   <div class="col-12 col-sm-4">
                     <div class="info-box bg-light">
                       <div class="info-box-content imgNews2">
-                        <span class="info-box-text text-center text-muted">POSTER</span>
+                        <span class="info-box-text text-center text-muted">COVER</span>
                         <label for="image2" style="width: 100%; text-align: center">
                           <img alt="" style="
                               width: 238.6px;
                               height: 247.4px;
                               object-fit: cover;
                             "
-                            src="https://www.kunimi-media.jp/wordpress/wp-content/themes/keni8-child/images/no-image.jpg" />
+                           src="{{ imagesApiUrl }}/gallery/square/{{ res.images.cover }}.png"/>
                         </label>
                         <input type="file" (change)="onFileSelected2($event)" name="image2" id="image2" hidden />
                       </div>
@@ -145,7 +155,7 @@
                   </div>
                 </div>
                 <div class="float-right mt-3 mb-3">
-                  <button type="submit" class="btn btn-sm btn-primary">Create</button>
+                  <button type="submit" class="btn btn-sm btn-primary">Update</button>
                 </div>
               </div>
             </div>
