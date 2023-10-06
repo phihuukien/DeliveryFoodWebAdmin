@@ -54,24 +54,24 @@
               </div>
             </form>
 
-            <form  action="put" [formGroup]="CategoryFUp" class="signin-form" (submit)="onUpdate()"  *ngIf="!isPost">
+            <form  action="post" [formGroup]="CategoryFUp" class="signin-form" (submit)="onUpdate()"  *ngIf="!isPost">
               <div class="card-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Name Update</label>
-                  <input type="text" class="form-control" placeholder="Name" [value]="category.name" formControlName="name" />
+                  <input type="text" class="form-control" placeholder="Name" [(ngModel)]="category.name" formControlName="name" />
                 </div>
                 <div>
                   <label>Status</label>
                 </div>
                 <div class="form-group clearfix">
                   <div class="icheck-primary d-inline mr-2">
-                    <input type="radio" id="radioPrimary1" name="status"   [(ngModel)]="status" >
+                    <input type="radio" id="radioPrimary1" name="status" [(ngModel)]="category.status"  formControlName="status"  [value]="1">
                     <label for="radioPrimary1">
                       Show
                     </label>
                   </div>
                   <div class="icheck-primary d-inline">
-                    <input type="radio" id="radioPrimary2" name="status"  [(ngModel)]="status"  >
+                    <input type="radio" id="radioPrimary2" name="status" [(ngModel)]="category.status"  formControlName="status" [value]="2">
                     <label for="radioPrimary2">
                       Hide
                     </label>

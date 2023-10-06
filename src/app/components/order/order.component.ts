@@ -69,46 +69,5 @@ export class OrderComponent implements OnInit {
         //  }
        })
     })
-  getOrdersAll(
-    searchString: string,
-    page: number,
-    sort_orderBy: string,
-    sort_order: string,
-    fromDate: string,
-    toDate: string,
-    order_status: number
-  ) {
-    this.orderService
-      .getOrdersAll(
-        searchString,
-        page,
-        sort_orderBy,
-        sort_order,
-        fromDate,
-        toDate,
-        order_status
-      )
-      .subscribe({
-        next: (response: any) => {
-          console.log(response);
-          if (response.status) {
-            this.ordersAll = response.data;
-            this.total_pages = response.total_Page;
-            this.page = response.page;
-            this.sort_orderBy = response.sort_orderBy;
-            this.sort_order = response.sort_order;
-            this.fromDate = fromDate;
-            this.toDate = toDate;
-            this.order_status = order_status;
-          }
-        },
-        error: (error) => {
-          console.log(error);
-          // this.location.back();
-          //  if(error.status){
-          //  this.router.navigate(['/not_found'])
-          //  }
-        },
-      });
   }
 }

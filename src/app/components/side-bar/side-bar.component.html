@@ -39,7 +39,15 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 
                 <li class="nav-item nav-item-customer">
-                    <a [routerLink]="['/dasboard_partner']" class="nav-link dashboard">
+                    <a [routerLink]="['/dasboard_partner']" class="nav-link dashboard active" *ngIf="role == 'PARTNER'">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Dashboard
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-customer">
+                    <a [routerLink]="['/dasboard_admin']" class="nav-link dashboard" *ngIf="role == 'ADMIN'">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
                             Dashboard
@@ -55,15 +63,15 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a [routerLink]="['/restaurants']" class="nav-link  pl-1-custom">
+                        <li class="nav-item ">
+                            <a [routerLink]="['/restaurants']" class="nav-link  pl-1-custom ">
                                 <p>Restaurants All</p>
                             </a>
                         </li>
                     </ul>
                 </li>
 
-                <li class="nav-item nav-item-customer menu-open" *ngIf="role == 'PARTNER'">
+                <li class="nav-item nav-item-customer" *ngIf="role == 'PARTNER'">
                     <a  class="nav-link">
                         <i class="nav-icon fas fa-utensils"></i>
                         <p>
@@ -84,17 +92,16 @@
                         </li>
                     </ul>
                 </li>
-
-                <li class="nav-item nav-item-customer" *ngIf="role == 'PARTNER'">
-                    <a routerLink="/cate-restaurant" class="nav-link"  style="cursor:pointer;">
-                        <i class="nav-icon fas fa-list"></i>
+                <li class="nav-item nav-item-customer">
+                    <a [routerLink]="['/cate-restaurant']" class="nav-link dashboard" *ngIf="role == 'PARTNER'">
+                        <i class="nav-icon fas fa-th"></i>
                         <p>
-                           Categories Management
+                            Categories Management
                         </p>
                     </a>
                 </li>
 
-                <li class="nav-item nav-item-customer" *ngIf="role == 'PARTNER'">
+                <li class="nav-item nav-item-customer menu-open" *ngIf="role == 'PARTNER'">
                     <a  class="nav-link">
                         <i class="nav-icon fas fa-pizza-slice"></i>
                         <p>
@@ -131,17 +138,7 @@
                                 <p>Orders All</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a   class="nav-link  pl-1-custom">
-                                
-                                <p>Cancelled Orders</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a   class="nav-link  pl-1-custom">
-                                <p>Return/Refund</p>
-                            </a>
-                        </li>
+                       
                     </ul>
                 </li>
 
@@ -163,6 +160,16 @@
                     </ul>
                 </li>
 
+
+                <li class="nav-item nav-item-customer" style="cursor: pointer;">
+                    <a class="nav-link dashboard" *ngIf="role == 'PARTNER'" (click)="changeRestaurant()">
+                      
+                        <i class="fas fa-sync"></i>
+                        <p>
+                            Change Restaurant
+                        </p>
+                    </a>
+                </li>
 
             </ul>
         </nav>

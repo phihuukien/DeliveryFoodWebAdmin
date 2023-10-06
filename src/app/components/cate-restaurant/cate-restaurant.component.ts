@@ -10,20 +10,22 @@ import { CategoryService } from 'src/app/services/category/category.service';
   styleUrls: ['./cate-restaurant.component.css'],
 })
 export class CateRestaurantComponent implements OnInit {
-  restaurantId: string = '';
+  restaurantId:string="";
   isPost = true;
-  public status:boolean = true;
   categories:Array<Category>= [];
   category:Category= new Category;
+
   CategoryF: FormGroup = new FormGroup({
     name: new FormControl("", [Validators.required]),
     status: new FormControl(1),
     restaurantId: new FormControl(''),
   });
+
   CategoryFUp: FormGroup = new FormGroup({
     id: new FormControl("", [Validators.required]),
-    name: new FormControl("", [Validators.required]),
-    status: new FormControl(this.category.status),
+    name: new FormControl(this.category.name, [Validators.required]),
+    status: new FormControl(1),
+    updateName:new FormControl("", [Validators.required]),
     restaurantId: new FormControl(''),
   });
   constructor(
@@ -63,12 +65,18 @@ export class CateRestaurantComponent implements OnInit {
       },
     });
   }
+  
+  nameOld:string="";
+
   onUpdate() {
-    console.log(this.status)
     this.CategoryFUp.value.restaurantId = this.category.restaurantId;
     this.CategoryFUp.value.id = this.category.id;
+    this.CategoryFUp.value.updateName = this.nameOld;
+    
+    console.log(this.CategoryFUp.value);
     this.cateService.UpdateCategory(this.CategoryFUp.value).subscribe({
       next: (response: any) => {
+        console.log(response);
         this.getAllCategory();
         this.CategoryF.reset();
         this.isPost = true
@@ -85,8 +93,8 @@ export class CateRestaurantComponent implements OnInit {
     this.cateService.GetCategoryById(id).subscribe({
       next: (response: any) => {
         this.category= response.data;
-        this.CategoryFUp.value.status =  response.data.status;
-        this.CategoryFUp.value.name =  response.data.name;
+        
+        this.nameOld= this.category.name;
       },
       error: (err) => {
         // this.toast.error({detail:"ERROR",summary:'login failed',duration:5000});

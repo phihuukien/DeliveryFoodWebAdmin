@@ -18,6 +18,6 @@ export const GlobalVariable = Object.freeze({
     INSERT_CATEGORY:"CategoriesRestaurants/insert-category",
     GET_CATEGORY:"CategoriesRestaurants/getAllCatRes/",
     GET_CATEGORY_BY_ID:"CategoriesRestaurants/get-cate-by-id/",
-    UPDATE_CATEGORY:"CategoriesRestaurants/update-category/"
+    UPDATE_CATEGORY:"CategoriesRestaurants/update-category"
     //... more of your variables
 });

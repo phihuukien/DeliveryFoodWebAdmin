@@ -19,7 +19,7 @@ export class CategoryService {
     }))
   }
   UpdateCategory(category: Category):Observable<Category>{
-    return this.http.put<Category>(api_update, category).pipe(map((res: any) => {
+    return this.http.post<Category>(api_update, category).pipe(map((res: any) => {
    return res
     }))
   }
