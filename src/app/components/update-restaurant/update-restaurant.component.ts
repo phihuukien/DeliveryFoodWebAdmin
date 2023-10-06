@@ -145,6 +145,7 @@ export class UpdateRestaurantComponent {
     const file: File = event.target.files[0];
     if (file) {
       this.logo = file;
+      console.log(this.logo.name.split('.').slice(0, -1).join('.'));
     }
   }
   onFileSelected1(event: any) {
@@ -180,6 +181,7 @@ export class UpdateRestaurantComponent {
   }
   submit() {
     const formData = new FormData();
+    formData.append('Id', this.restaurantId);
     formData.append('Name', this.form.value.name);
     formData.append('Type', this.form.value.type);
     formData.append('Location', this.form.value.location);
@@ -189,14 +191,17 @@ export class UpdateRestaurantComponent {
     formData.append('Poster', this.poster);
     formData.append('Cover', this.cover);
     formData.append('Tags', this.tagsOld.toString());
+    formData.append('Categories', this.categories.toString());
     formData.append('Username', this.username);
     console.log(formData);
     
     this.http
-      .post('http://localhost:7090/api/restaurants/add-restaurant', formData)
+      .post('http://localhost:7090/api/restaurants/update-restaurant', formData)
       .subscribe((x) => {
         this.message = x;
+        this.cookieService.set('img', this.logo.name.split('.').slice(0, -1).join('.'));
         alert(this.message.message);
+        this.router.navigate(['/detail-restaurant']);
       });
   }
 }

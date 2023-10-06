@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { GlobalVariable } from 'src/apiGlobal';
+import { AuthService } from 'src/app/services/authentication/auth.service';
 
 @Component({
   selector: 'app-create-restaurant2',
@@ -16,10 +17,11 @@ export class CreateRestaurant2Component implements OnInit {
     private router: Router,
     private activeRoute: ActivatedRoute,
     private cookieService: CookieService,
-    private http: HttpClient
+    private http: HttpClient,
+    private auth: AuthService,
   ) {
     this.restaurantId = this.cookieService.get('restaurantId');
-    this.username = this.cookieService.get('username');
+ 
   }
   form: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -29,7 +31,7 @@ export class CreateRestaurant2Component implements OnInit {
     type: new FormControl(''),
   })
   message:any;
-  username:any;
+  username =this.auth.decodedToken().name;
   restaurantId :any;
   lstTag : any=[];
   imagesApiUrl = GlobalVariable.IMAGES_API_URL;

@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
                 if (response.status) {
                   this.router.navigate(['/choose_restaurant']);
                 } else {
-                  this.router.navigate(['/create_restaurant']);
+                  this.router.navigate(['/create-new-restaurant']);
                 }
               })
             }

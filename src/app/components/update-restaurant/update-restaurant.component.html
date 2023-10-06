@@ -91,7 +91,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-6 " >
+                  <div *ngIf="lstCategory.length >0" class="col-6 " >
                     <h5 class="mt-4 text-muted">Categories :</h5>
                         <div style="overflow-y: auto;">
                         <ul class="list-unstyled"  *ngFor="let category of lstCategory  index as i">
