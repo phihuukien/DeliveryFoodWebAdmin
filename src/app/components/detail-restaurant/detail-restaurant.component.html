@@ -1,0 +1,129 @@
+<!-- Preloader -->
+
+<app-header></app-header>
+<app-side-bar></app-side-bar>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Detail Resstaurant</h1>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a routerLink>Home</a></li>
+                        <li class="breadcrumb-item active">Detail Resstaurant</li>
+                    </ol>
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card card-primary">
+                <!-- form start -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-md-12 col-lg-4 order-1 order-md-1">
+                            <h3 class="text-primary">
+                                <i class="fa fa-cutlery"></i> {{ res.name
+                                }}
+                            </h3>
+                            <div class="text-muted">
+                                <p class="text-sm">
+                                    Location :
+                                    <b class="d-block"> {{ res.location }}</b>
+                                </p>
+                                <p class="text-sm">
+                                    Type :
+                                    <b class="d-block"> {{ res.type }}</b>
+                                </p>
+                                <p class="text-sm">
+                                    Distance :
+                                    <b class="d-block"> {{ res.distance }}</b>
+                                </p>
+                                <p class="text-sm">
+                                    Time :
+                                    <b class="d-block"> {{ res.times }}</b>
+                                </p>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5 class="mt-4 text-muted">Tags :</h5>
+                                    <div  style="overflow-y: auto;">
+                                        <ul class="list-unstyled " *ngFor="let tag of res.tags">
+                                            <li>
+                                                <b href class="d-block">{{ tag }}</b>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div *ngIf="res.categories.length >0" class="col-6 " >
+                                    <h5 class="mt-4 text-muted">Categories :</h5>
+                                        <div style="overflow-y: auto;">
+                                        <ul class="list-unstyled"  *ngFor="let category of res.categories">
+                                            <li>
+                                                <b href class="d-block">{{ category }}</b>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-12 col-lg-8 order-2 order-md-2">
+                            <div class="row">
+                                <div class="col-12 col-sm-4">
+                                    <div class="info-box bg-light">
+                                        <div class="info-box-content">
+                                            <span class="info-box-text text-center text-muted">LOGO</span>
+                                            <img alt style="border-radius: 5px"
+                                                src="{{ imagesApiUrl }}/logo/{{ res.images.logo }}.png" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="info-box bg-light">
+                                        <div class="info-box-content">
+                                            <span class="info-box-text text-center text-muted">POSTER</span>
+                                            <img alt style="border-radius: 5px" src="{{ imagesApiUrl }}/poster/{{res.images.poster}}.png" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-4">
+                                    <div class="info-box bg-light">
+                                        <div class="info-box-content">
+                                            <span class="info-box-text text-center text-muted">COVER</span>
+                                            <img alt style="border-radius: 5px" src="{{ imagesApiUrl }}/gallery/square/{{res.images.cover}}.png" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="float-right mt-3 mb-3">
+                                <a routerLink="/update-restaurant" class="btn btn-sm btn-primary">Update Restaurant</a>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<app-footer></app-footer>
+<!-- ./wrapper -->

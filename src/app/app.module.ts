@@ -24,9 +24,13 @@ import { DashboardAdminComponent } from './components/dashboardadmin/dashboard-a
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import { FoodsComponent } from './components/foods/foods.component';
 import { CreateFoodComponent } from './components/create-food/create-food.component';
-import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
+// import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
 import { ReviewComponent } from './components/review/review.component';
 import { CateRestaurantComponent } from './components/cate-restaurant/cate-restaurant.component';
+import { UpdateFoodComponent } from './components/update-food/update-food.component';
+import { DetailRestaurantComponent } from './components/detail-restaurant/detail-restaurant.component';
+import { UpdateRestaurantComponent } from './components/update-restaurant/update-restaurant.component';
+import { CreateRestaurant2Component } from './components/create-restaurant2/create-restaurant2.component';
 
 @NgModule({
   declarations: [
@@ -48,10 +52,15 @@ import { CateRestaurantComponent } from './components/cate-restaurant/cate-resta
     InvoiceComponent,
     FoodsComponent,
     CreateFoodComponent,
-    ListRestaurantsComponent,
+    // ListRestaurantsComponent,
     CateRestaurantComponent,
     InvoiceComponent,
     ReviewComponent,
+    UpdateFoodComponent,
+    DetailRestaurantComponent,
+    UpdateRestaurantComponent,
+    CreateRestaurant2Component
+
   ],
   imports: [
     BrowserModule,

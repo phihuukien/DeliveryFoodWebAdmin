@@ -4,7 +4,8 @@ export class Food {
     name: string = "";
     price: number = 0;
     image: string = "";
-    categories: Array<string> = [];
+    status:number=0;
+    category: string ='';
     description: string = "";
     ingredients: string = "";
 }
