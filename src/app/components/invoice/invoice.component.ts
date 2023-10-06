@@ -18,7 +18,7 @@ export class InvoiceComponent implements OnInit {
     this.orderService.getOrderDetail(idParams).subscribe({
       next:((response:any)=>{
         console.log(response)
-        console.log(response.data)
+        console.log(response.data.note)
         console.log(response.dataOrderDetail)
         if(response.status){
           this.order = response.data;
