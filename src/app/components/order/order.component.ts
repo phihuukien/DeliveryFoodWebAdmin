@@ -24,6 +24,14 @@ export class OrderComponent implements OnInit{
   ngOnInit(): void {
     this.getOrdersAll(this.searchString,this.page,this.sort_orderBy,this.sort_order,this.fromDate,this.toDate,this.order_status);
   }
+  deleteOrder(id:string) {
+    this.orderService.deleteOrder(id).subscribe({
+      next: ((response: any) => {
+        this.getOrdersAll(this.searchString,this.page,this.sort_orderBy,this.sort_order,this.fromDate,this.toDate,this.order_status);
+        
+      })
+    })
+  }
   getOrdersAll(searchString:string,
                page:number,
                sort_orderBy:string,

@@ -20,11 +20,11 @@
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
   </div>
- <!-- Main content -->
- <section class="content"  >
+  <!-- Main content -->
+  <section class="content">
     <div class="container-fluid">
       <!-- Small boxes (Stat box) -->
-       <div class="row">
+      <div class="row">
         <div class="col-lg-3 col-6">
           <div class="small-box bg-info">
             <div class="inner">
@@ -39,7 +39,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-6">
-        
+
           <div class="small-box bg-success">
             <div class="inner">
               <h3>{{responseDashboard.orderFinish}}</h3>
@@ -53,7 +53,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-6">
-         
+
           <div class="small-box bg-warning">
             <div class="inner">
               <h3>{{responseDashboard.orderCancel}}</h3>
@@ -67,12 +67,12 @@
           </div>
         </div>
         <div class="col-lg-3 col-6">
-      
+
           <div class="small-box bg-danger">
             <div class="inner">
               <h3>$ {{responseDashboard.earnings}}</h3>
 
-              <p>Earnings This Month</p>
+              <p>Earnings This Today</p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
@@ -99,13 +99,13 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-header border-transparent">
-              <h3 class="card-title">Latest Orders</h3>
-  
+              <h3 class="card-title">Pending Orders ({{orderPending.length}})</h3>
+
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                   <i class="fas fa-minus"></i>
                 </button>
-                
+
               </div>
             </div>
             <!-- /.card-header -->
@@ -113,92 +113,385 @@
               <div class="table-responsive">
                 <table class="table m-0">
                   <thead>
-                  <tr>
-                    <th>Order ID</th>
-                    <th>Item</th>
-                    <th>Status</th>
-                    <th>Popularity</th>
-                  </tr>
+                    <tr>
+                      <th>Order ID</th>
+                      <th>Quantity</th>
+                      <th>Price Total</th>
+                      <th>Action</th>
+                    </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="badge badge-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="badge badge-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="badge badge-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="badge badge-info">Processing</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="badge badge-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="badge badge-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="badge badge-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                    </td>
-                  </tr>
+                    <tr *ngFor="let item of orderPending">
+                      <td><a data-toggle="modal" data-target="#modal-xl" style="cursor: pointer;" (click)="getOrderById(item.id)">{{item.orderCode}}</a></td>
+                      <td>{{item.quantity}}</td>
+                      <td>{{item.priceTotal}} $</td>
+                      <td class="d-flex">
+                        <div class="sparkbar" data-color="#00a65a" data-height="20" (click)="gettingOrder(2,item.id)"
+                          style="cursor: pointer;"><span class="badge badge-success" data-toggle="tooltip" data-placement="button" title="Getting Order"><i class="fas fa-vote-yea"></i></span></div>
+                        <div class="sparkbar ml-2" data-color="#00a65a" data-height="20" data-toggle="modal" data-target="#modal-default"
+                          style="cursor: pointer;"><span class="badge badge-danger" data-toggle="tooltip" data-placement="button" title="cancel order" (click)="setId(item.id)"><i class="fas fa-backspace"></i></span></div>
+                      </td>
+                    </tr>
+
                   </tbody>
                 </table>
               </div>
               <!-- /.table-responsive -->
             </div>
-            <!-- /.card-body -->
-            <div class="card-footer clearfix">
-              <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
-              <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
-            </div>
             <!-- /.card-footer -->
           </div>
         </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header border-transparent">
+              <h3 class="card-title">Waiting Orders ({{orderWaiting.length}})</h3>
 
-   
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table m-0">
+                  <thead>
+                    <tr>
+                      <th>Order ID</th>
+                      <th>Quantity</th>
+                      <th>Price Total</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of orderWaiting">
+                      <td > <a  data-toggle="modal" data-target="#modal-lg" style="cursor: pointer;" (click)="getOrderById(item.id)">{{item.orderCode}}</a></td>
+                      <td>{{item.quantity}}</td>
+                      <td>{{item.priceTotal}} $</td>
+                      <td><span class="badge badge-info" *ngIf="item.deliveringStatus == 1">waiting</span>
+                        <span class="badge badge-success" *ngIf="item.deliveringStatus == 2">da co shipper</span>
+                      </td>
+                      <td>
+                        <a href="" data-toggle="tooltip" data-placement="button" title="print order" *ngIf="item.deliveringStatus == 2"><i class="fas fa-print" style="color: black;"></i></a> 
+                        <a href="" (click)="gettingOrder(4,item.id)" data-toggle="tooltip" data-placement="button" title="order success" *ngIf="item.deliveringStatus !=1" ><i class="far fa-check-square mx-2" style="color: green;"></i></a> 
+                        <a href="" data-toggle="tooltip" data-placement="button" title="cancel order" data-toggle="modal" data-target="#modal-default"><i class="fas fa-backspace" style="color: red;"></i></a> 
+                      </td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+          </div>
+        </div>
+
+
       </div>
 
       <!-- /.row -->
 
     </div><!-- /.container-fluid -->
   </section>
-  </div>
+</div>
 
-  <!-- /.content -->
-  <app-footer></app-footer>
+<!-- /.content -->
+<app-footer></app-footer>
+
+
+<div class="modal fade" id="modal-default">
+  <div class="modal-dialog" style="    margin-top: 15%;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Cancel reason</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <textarea id="w3review" name="w3review" style="width: 100%;" cols="50" [(ngModel)]="reason"></textarea>
+      
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close  </button>
+        <button type="button" class="btn btn-primary" (click)="cancelOrder()">Cancel</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="modal-xl">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <!-- Main content -->
+            <div class="invoice p-3 mb-3" id="invoice" *ngIf="order != null">
+              <!-- title row -->
+              <div class="row">
+                <div class="col-12">
+                  <h4>
+                      <i class="fas fa-stroopwafel"></i> Delivery food.
+                    <small class="float-right">Date: {{order.dateCreated | date:'short'}}</small>
+                  </h4>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- info row -->
+              <div class="row invoice-info">
+                <div class="col-sm-4 invoice-col">
+                  From
+                  <address>
+                    <strong>{{order.restaurant[0].name}}</strong><br>
+                  
+                    {{order.restaurant[0].location}}<br>
+                    Phone: (804) 123-5432<br>
+                    Email: info@almasaeedstudio.com
+                  </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                  To
+                  <address>
+                    <strong>{{order.username}}</strong><br>
+                    {{order.deliveryAddress}}<br>
+                    Phone: {{order.user[0].phone}}<br>
+                    Email: {{order.user[0].email}}
+                  </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+               
+                  <br>
+                  <b>Order ID:</b> {{order.orderCode}}<br>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+              <!-- Table row -->
+              <div class="row">
+                <div class="col-12 table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                    <tr>
+                      <th>Qty</th>
+                      <th>food Name</th>
+                      <th>Subtotal</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of orderDetail">
+                      <td>{{item.quantity}}</td>
+                      <td>{{item.foods[0].name}}</td>
+                      <td>${{item.quantity * item.foods[0].price}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+              <div class="row">
+                <!-- accepted payments column -->
+                <div class="col-6">
+                  <p class="lead">Payment Methods:  <small class="badge badge-primary" *ngIf="order.paymentMothod ==  1">Payment on delivered</small>
+                    <small class="badge badge-warning" *ngIf="order.paymentMothod ==  2">Prepayment</small> </p>
+
+                  <p class="lead">Note:</p>
+                  <p class="text-muted well well-sm shadow-none" *ngIf="order.note.length > 0" style="margin-top: 10px;">
+                   {{order.note}}
+                  </p>
+                  <p class="text-muted well well-sm shadow-none" *ngIf="order.note.length == 0" style="margin-top: 10px;">
+                    Not note
+                   </p>
+                </div>
+                <!-- /.col -->
+                <div class="col-6">
+                  <p class="lead">Amount Due 2/22/2014</p>
+
+                  <div class="table-responsive">
+                    <table class="table">
+                      <tr>
+                        <th style="width:50%">Subtotal:</th>
+                        <td>${{order.priceTotal}}</td>
+                      </tr>
+                      <tr>
+                        <th>Shipping:</th>
+                        <td>Free</td>
+                      </tr>
+                      <tr>
+                        <th>Total:</th>
+                        <td>${{order.priceTotal}}</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+          
+          
+            </div>
+            <!-- /.invoice -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div>
+      <div class="modal-footer justify-content-between">        
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+
+<div class="modal fade" id="modal-lg">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="orderpill">
+        <div class="row">
+          <div class="col-12">
+            <!-- Main content -->
+            <div class="invoice p-3 mb-3" id="invoice" *ngIf="order != null">
+              <!-- title row -->
+              <div class="row">
+                <div class="col-12">
+                  <h4>
+                      <i class="fas fa-stroopwafel"></i> Delivery food.
+                    <small class="float-right">Date: {{order.dateCreated | date:'short'}}</small>
+                  </h4>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- info row -->
+              <div class="row invoice-info">
+                <div class="col-sm-4 invoice-col">
+                  From
+                  <address>
+                    <strong>{{order.restaurant[0].name}}</strong><br>
+                  
+                    {{order.restaurant[0].location}}<br>
+                    Phone: (804) 123-5432<br>
+                    Email: info@almasaeedstudio.com
+                  </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                  To
+                  <address>
+                    <strong>{{order.username}}</strong><br>
+                    {{order.deliveryAddress}}<br>
+                    Phone: {{order.user[0].phone}}<br>
+                    Email: {{order.user[0].email}}
+                  </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+               
+                  <br>
+                  <b>Order ID:</b> {{order.orderCode}}<br>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+              <!-- Table row -->
+              <div class="row">
+                <div class="col-12 table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                    <tr>
+                      <th>Qty</th>
+                      <th>food Name</th>
+                      <th>Subtotal</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let item of orderDetail">
+                      <td>{{item.quantity}}</td>
+                      <td>{{item.foods[0].name}}</td>
+                      <td>${{item.quantity * item.foods[0].price}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+              <div class="row">
+                <!-- accepted payments column -->
+                <div class="col-6">
+                  <p class="lead">Payment Methods:  <small class="badge badge-primary" *ngIf="order.paymentMothod ==  1">Payment on delivered</small>
+                    <small class="badge badge-warning" *ngIf="order.paymentMothod ==  2">Prepayment</small> </p>
+
+                  <p class="lead">Note:</p>
+                  <p class="text-muted well well-sm shadow-none" *ngIf="order.note.length > 0" style="margin-top: 10px;">
+                   {{order.note}}
+                  </p>
+                  <p class="text-muted well well-sm shadow-none" *ngIf="order.note.length == 0" style="margin-top: 10px;">
+                    Not note
+                   </p>
+                </div>
+                <!-- /.col -->
+                <div class="col-6">
+                  <p class="lead">Amount Due 2/22/2014</p>
+
+                  <div class="table-responsive">
+                    <table class="table">
+                      <tr>
+                        <th style="width:50%">Subtotal:</th>
+                        <td>${{order.priceTotal}}</td>
+                      </tr>
+                      <tr>
+                        <th>Shipping:</th>
+                        <td>Free</td>
+                      </tr>
+                      <tr>
+                        <th>Total:</th>
+                        <td>${{order.priceTotal}}</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+          
+          
+            </div>
+            <!-- /.invoice -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div>
+      <div class="modal-footer justify-content-between">
+        <a  class="btn btn-default"(click)="print('orderpill')" data-toggle="modal" data-target="#modal-lg" rel="noopener" target="_blank" ><i class="fas fa-print"></i> Print</a>
+                 
+       
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

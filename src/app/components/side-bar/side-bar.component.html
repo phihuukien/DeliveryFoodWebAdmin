@@ -10,7 +10,16 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex" *ngIf="role == 'PARTNER'">
+            <!-- <div class="image">
+                <img style="border-radius:5px;    height: 58px;
+                width: 4.1rem;" src="{{imagesApiUrl}}/logo/{{img}}.png" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block" style=" color: #ff761c;">{{username}}</a>
+                <a href="#" class="d-block">{{restaurantName}}</a>
+            </div>
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex"> -->
             <a routerLink="/detail-restaurant" style="display: flex;">
                 <div class="image">
                     <img style="border-radius: 5px; height: 58px; width: 4.1rem"
@@ -21,6 +30,16 @@
                     <a routerLink="/detail-restaurant" class="d-block">{{ restaurantName }}</a>
                 </div>
             </a>
+        </div>
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex" *ngIf="role == 'ADMIN'">
+            <div class="image">
+                <img style="border-radius:5px;    height: 58px;
+                width: 4.1rem;" src="assets/dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                <a href="#" class="d-block" style=" color: #ff761c;">{{username}}</a>
+               
+            </div>
         </div>
 
         <!-- SidebarSearch Form -->
