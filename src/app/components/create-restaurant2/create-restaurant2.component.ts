@@ -6,11 +6,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { GlobalVariable } from 'src/apiGlobal';
 
 @Component({
-  selector: 'app-create-restaurant',
-  templateUrl: './create-restaurant.component.html',
-  styleUrls: ['./create-restaurant.component.css']
+  selector: 'app-create-restaurant2',
+  templateUrl: './create-restaurant2.component.html',
+  styleUrls: ['./create-restaurant2.component.css']
 })
-export class CreateRestaurantComponent implements OnInit {
+export class CreateRestaurant2Component implements OnInit {
   authService: any;
   constructor(
     private router: Router,
@@ -126,8 +126,8 @@ export class CreateRestaurantComponent implements OnInit {
     console.log(this.tags)
     this.http.post("http://localhost:7090/api/restaurants/add-restaurant",formData).subscribe((x) => {
       this.message = x
-        alert(this.message.message)
+      this.router.navigate(['/choose_restaurant'])
     });
   }
-  
+
 }

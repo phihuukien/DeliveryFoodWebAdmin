@@ -27,6 +27,7 @@ import { CreateFoodComponent } from './components/create-food/create-food.compon
 import { UpdateFoodComponent } from './components/update-food/update-food.component';
 import { DetailRestaurantComponent } from './components/detail-restaurant/detail-restaurant.component';
 import { UpdateRestaurantComponent } from './components/update-restaurant/update-restaurant.component';
+import { CreateRestaurant2Component } from './components/create-restaurant2/create-restaurant2.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { UpdateRestaurantComponent } from './components/update-restaurant/update
     CreateFoodComponent,
     UpdateFoodComponent,
     DetailRestaurantComponent,
-    UpdateRestaurantComponent
+    UpdateRestaurantComponent,
+    CreateRestaurant2Component
 
   ],
   imports: [
