@@ -6,23 +6,29 @@ import { OrderService } from 'src/app/services/order/order.service';
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
-  styleUrls: ['./order.component.css']
+  styleUrls: ['./order.component.css'],
 })
-export class OrderComponent implements OnInit{
-  ordersAll:any;
-  fromDate:string="";
-  toDate:string="";
-  order_status:number = 0;
-  searchString:string="";
-  sort_orderBy:string="";
-  sort_order:string="";
+export class OrderComponent implements OnInit {
+  ordersAll: any;
+  fromDate: string = '';
+  toDate: string = '';
+  order_status: number = 0;
+  searchString: string = '';
+  sort_orderBy: string = '';
+  sort_order: string = '';
   total_pages: number = 0;
   page: number = 1;
-  constructor(private orderService: OrderService, private router: Router) {
-
-  }
+  constructor(private orderService: OrderService, private router: Router) {}
   ngOnInit(): void {
-    this.getOrdersAll(this.searchString,this.page,this.sort_orderBy,this.sort_order,this.fromDate,this.toDate,this.order_status);
+    this.getOrdersAll(
+      this.searchString,
+      this.page,
+      this.sort_orderBy,
+      this.sort_order,
+      this.fromDate,
+      this.toDate,
+      this.order_status
+    );
   }
   deleteOrder(id:string) {
     this.orderService.deleteOrder(id).subscribe({
@@ -64,5 +70,4 @@ export class OrderComponent implements OnInit{
        })
     })
   }
-
 }

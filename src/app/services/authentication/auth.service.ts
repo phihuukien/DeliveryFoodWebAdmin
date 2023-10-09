@@ -19,6 +19,7 @@ export class AuthService {
    
   }
 
+
   register(requestRegister: RequestRegister): Observable<RequestRegister>{
     return this.http.post<RequestRegister>(api_register, requestRegister).pipe(map((res: any) => {
       return res;

@@ -1,5 +1,6 @@
 <app-header></app-header>
 <app-side-bar></app-side-bar>
+
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
 
@@ -172,12 +173,13 @@
                       <td>{{item.quantity}}</td>
                       <td>{{item.priceTotal}} $</td>
                       <td><span class="badge badge-info" *ngIf="item.deliveringStatus == 1">waiting</span>
-                        <span class="badge badge-success" *ngIf="item.deliveringStatus == 2">da co shipper</span>
+                        <span class="badge badge-success" *ngIf="item.deliveringStatus == 2">there is a shipper</span>
+                        <span class="badge badge-success" *ngIf="item.deliveringStatus > 3">Success</span>
                       </td>
                       <td>
-                        <a href="" data-toggle="tooltip" data-placement="button" title="print order" *ngIf="item.deliveringStatus == 2"><i class="fas fa-print" style="color: black;"></i></a> 
+                        <a href="" data-toggle="tooltip" data-placement="button" title="print order"  data-toggle="modal" data-target="#modal-lg" style="cursor: pointer;" (click)="getOrderById(item.id)" *ngIf="item.deliveringStatus == 2"><i class="fas fa-print" style="color: black;"></i></a> 
                         <a href="" (click)="gettingOrder(4,item.id)" data-toggle="tooltip" data-placement="button" title="order success" *ngIf="item.deliveringStatus !=1" ><i class="far fa-check-square mx-2" style="color: green;"></i></a> 
-                        <a href="" data-toggle="tooltip" data-placement="button" title="cancel order" data-toggle="modal" data-target="#modal-default"><i class="fas fa-backspace" style="color: red;"></i></a> 
+                        <a href="" data-toggle="tooltip" data-placement="button" title="cancel order" data-toggle="modal" data-target="#modal-default" *ngIf="item.deliveringStatus < 4"  (click)="setId(item.id)"><i class="fas fa-backspace" style="color: red;"></i></a> 
                       </td>
                     </tr>
 
@@ -199,7 +201,7 @@
 </div>
 
 <!-- /.content -->
-<app-footer></app-footer>
+
 
 
 <div class="modal fade" id="modal-default">
@@ -217,7 +219,7 @@
       </div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close  </button>
-        <button type="button" class="btn btn-primary" (click)="cancelOrder()">Cancel</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="cancelOrder()">Cancel</button>
       </div>
     </div>
     <!-- /.modal-content -->
@@ -360,7 +362,7 @@
 </div>
 
 
-<div class="modal fade" id="modal-lg">
+<div class="modal fade" id="modal-lg" [class.show]="close">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
@@ -495,3 +497,4 @@
   </div>
   <!-- /.modal-dialog -->
 </div>
+<app-footer></app-footer>

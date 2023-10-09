@@ -19,10 +19,12 @@ export class DashboardPartnerComponent {
   restaurantId: string = "";
   public order: any;
   public orderDetail: any;
+  close:boolean = true;
   constructor(private router: Router,
     private activeRoute: ActivatedRoute,
     private dashboardService: DashboardService,
     private cookieService: CookieService, private signalRService: SignalRService, private orderService: OrderService) {
+      
     this.signalRService.startConnection();
     this.signalRService.onMessageReceived((message) => {
       this.getOrderToday();
@@ -32,10 +34,15 @@ export class DashboardPartnerComponent {
 
   }
   ngOnInit(): void {
+    this.dashboardService.setShowSilde(false);
     this.restaurantId = this.cookieService.get('restaurantId');
     this.getOrderToday();
     this.getOrderPending();
     this.getOrderWaiting();
+  }
+  closeModel(){
+    console.log("kkkk")
+    this.close=false;
   }
   orderId: string = "";
   setId(id: string) {

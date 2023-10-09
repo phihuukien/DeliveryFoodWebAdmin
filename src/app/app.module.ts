@@ -24,6 +24,9 @@ import { DashboardAdminComponent } from './components/dashboardadmin/dashboard-a
 import { InvoiceComponent } from './components/invoice/invoice.component';
 import { FoodsComponent } from './components/foods/foods.component';
 import { CreateFoodComponent } from './components/create-food/create-food.component';
+// import { ListRestaurantsComponent } from './components/list-restaurants/list-restaurants.component';
+import { ReviewComponent } from './components/review/review.component';
+import { CateRestaurantComponent } from './components/cate-restaurant/cate-restaurant.component';
 import { UpdateFoodComponent } from './components/update-food/update-food.component';
 import { DetailRestaurantComponent } from './components/detail-restaurant/detail-restaurant.component';
 import { UpdateRestaurantComponent } from './components/update-restaurant/update-restaurant.component';
@@ -49,6 +52,10 @@ import { CreateRestaurant2Component } from './components/create-restaurant2/crea
     InvoiceComponent,
     FoodsComponent,
     CreateFoodComponent,
+    // ListRestaurantsComponent,
+    CateRestaurantComponent,
+    InvoiceComponent,
+    ReviewComponent,
     UpdateFoodComponent,
     DetailRestaurantComponent,
     UpdateRestaurantComponent,
@@ -60,13 +67,15 @@ import { CreateRestaurant2Component } from './components/create-restaurant2/crea
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptor,
-    multi: true
-  }],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

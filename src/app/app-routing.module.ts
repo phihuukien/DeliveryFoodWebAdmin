@@ -12,12 +12,14 @@ import { OrderComponent } from './components/order/order.component';
 import { DashboardPartnerComponent } from './components/dashboardpartner/dashboard-partner/dashboard-partner.component';
 import { DashboardAdminComponent } from './components/dashboardadmin/dashboard-admin/dashboard-admin.component';
 import { InvoiceComponent } from './components/invoice/invoice.component';
+import { ReviewComponent } from './components/review/review.component';
 import { FoodsComponent } from './components/foods/foods.component';
 import { CreateFoodComponent } from './components/create-food/create-food.component';
 import { UpdateFoodComponent } from './components/update-food/update-food.component';
 import { DetailRestaurantComponent } from './components/detail-restaurant/detail-restaurant.component';
 import { UpdateRestaurantComponent } from './components/update-restaurant/update-restaurant.component';
 import { CreateRestaurant2Component } from './components/create-restaurant2/create-restaurant2.component';
+import { CateRestaurantComponent } from './components/cate-restaurant/cate-restaurant.component';
 
 const routes: Routes = [
   {path:"dasboard",component:DashboardComponent,canActivate:[AuthGuard],data: { roles: ['DEFAULT'] }},
@@ -38,6 +40,9 @@ const routes: Routes = [
   {path:"not_found",component:NotFoundComponent},
   {path:"register",component:RegisterComponent},
   {path:"choose_restaurant",component:ChooseRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
+  {path:"create_restaurant",component:CreateRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
+  {path:"review",component:ReviewComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
+  {path:"cate-restaurant",component:CateRestaurantComponent,canActivate:[AuthGuard],data: { roles: ['PARTNER']}},
   {path:"",redirectTo:"dasboard",pathMatch:"prefix"},
 ];
 

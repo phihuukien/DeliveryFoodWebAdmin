@@ -96,7 +96,7 @@ export class UpdateRestaurantComponent {
         this.tagsOld = x.data.tags;
         this.res = x.data;
         this.http
-          .get('http://localhost:7090/api/Tags/tags')
+          .get('http://localhost:7090/api/tags/tags')
           .subscribe((y: any) => {
             this.lstTag = y.data;
             for (var i = 0; i < y.data.length; i++) {
@@ -193,15 +193,17 @@ export class UpdateRestaurantComponent {
     formData.append('Tags', this.tagsOld.toString());
     formData.append('Categories', this.categories.toString());
     formData.append('Username', this.username);
-    console.log(formData);
     
     this.http
       .post('http://localhost:7090/api/restaurants/update-restaurant', formData)
-      .subscribe((x) => {
-        this.message = x;
-        this.cookieService.set('img', this.logo.name.split('.').slice(0, -1).join('.'));
-        alert(this.message.message);
-        this.router.navigate(['/detail-restaurant']);
+      .subscribe((x:any) => {
+        console.log(x)
+        if(x.status){
+          this.message = x;
+          this.cookieService.set('img', this.logo.name.split('.').slice(0, -1).join('.'));
+          this.router.navigate(['/detail-restaurant'])
+        }
+       
       });
   }
 }

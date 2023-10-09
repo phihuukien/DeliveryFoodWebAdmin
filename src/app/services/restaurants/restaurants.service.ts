@@ -18,8 +18,7 @@ export class RestaurantsService {
   getRestaurantsByUsername (username:string): Observable<Array<Restaurants>>{
    
     return  this.http.get<Array<Restaurants>>(api+"/"+username);
-  
-  
 }
+
 
 }

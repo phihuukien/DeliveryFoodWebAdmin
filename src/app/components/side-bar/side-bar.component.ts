@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CookieOptions, CookieService } from 'ngx-cookie-service';
 import { GlobalVariable } from 'src/apiGlobal';
 import { AuthService } from 'src/app/services/authentication/auth.service';
+import { DashboardService } from 'src/app/services/dashboard/dashboard.service';
 
 
 
@@ -16,7 +18,7 @@ export class SideBarComponent implements OnInit {
   restaurantName:string="";
   img:string="";
   imagesApiUrl = GlobalVariable.IMAGES_API_URL
-  constructor(private authService: AuthService, private cookie:CookieService) { }
+  constructor(private authService: AuthService, private cookie:CookieService, private router: Router,private dasd : DashboardService) { }
 
   ngOnInit(): void {
     this.role = this.authService.decodedToken().role
@@ -26,6 +28,15 @@ export class SideBarComponent implements OnInit {
       this.img = this.cookie.get("img")
     }
     
+  }
+
+  changeRestaurant(){
+    this.cookie.delete('restaurantId');
+    this.cookie.delete('img');
+    this.cookie.delete('restaurantname');
+    this.dasd.setShowSilde(true);
+    this.router.navigate(['/choose_restaurant'])
+
   }
 
 }

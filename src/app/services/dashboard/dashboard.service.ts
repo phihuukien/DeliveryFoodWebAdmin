@@ -14,7 +14,13 @@ const api_update_order_status = GlobalVariable.BASE_API_URL + GlobalVariable.UPD
   providedIn: 'root'
 })
 export class DashboardService {
+  public showSilde:boolean = false;
   constructor(private http: HttpClient) { }
+
+  setShowSilde(IS:boolean){
+    this.showSilde = IS;
+  }
+
   getOrderToday(restaurantId: string): Observable<Array<ResponseDashboard>> {
     return this.http.get<Array<ResponseDashboard>>(api + restaurantId);
   }

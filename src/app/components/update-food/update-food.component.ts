@@ -80,6 +80,7 @@ export class UpdateFoodComponent {
     .subscribe((x) => {
       this.data = x;
       this.data = this.data.data;
+      console.log(  this.data)
     });
   }
   onFileSelected(event: any) {
