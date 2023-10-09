@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link" style="line-height: 2.8;">
+    <a [routerLink]="['/dasboard_partner']" class="brand-link" style="line-height: 2.8;">
         <img src="assets/dist/img/logoF.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8;max-height: 54px;">
         <span class="brand-text font-weight-light" style="font-family: cursive;">Delivery Food</span>
@@ -10,15 +10,18 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
+       
         <div class="user-panel mt-3 pb-3 mb-3 d-flex" *ngIf="role == 'PARTNER'">
-            <div class="image">
-                <img style="border-radius:5px;    height: 58px;
-                width: 4.1rem;" src="{{imagesApiUrl}}/logo/{{img}}.png" class="img-circle elevation-2" alt="User Image">
-            </div>
-            <div class="info">
-                <a href="#" class="d-block" style=" color: #ff761c;">{{username}}</a>
-                <a href="#" class="d-block">{{restaurantName}}</a>
-            </div>
+            <a routerLink="/detail-restaurant" style="display: flex;">
+                <div class="image">
+                    <img style="border-radius: 5px; height: 58px; width: 4.1rem"
+                        src="{{ imagesApiUrl }}/logo/{{img}}.png" class="img-circle elevation-2" alt="User Image" />
+                </div>
+                <div class="info">
+                    <a routerLink="/detail-restaurant" class="d-block" style="color: #ff761c">{{ username }}</a>
+                    <a routerLink="/detail-restaurant" class="d-block">{{ restaurantName }}</a>
+                </div>
+            </a>
         </div>
         <div class="user-panel mt-3 pb-3 mb-3 d-flex" *ngIf="role == 'ADMIN'">
             <div class="image">
@@ -71,27 +74,6 @@
                     </ul>
                 </li>
 
-                <li class="nav-item nav-item-customer" *ngIf="role == 'PARTNER'">
-                    <a  class="nav-link">
-                        <i class="nav-icon fas fa-utensils"></i>
-                        <p>
-                           Restaurants 
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a [routerLink]="['/list-restaurants']" class="nav-link  pl-1-custom">
-                                <p>Restaunrants</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a routerLink="/create-restaurant"  class="nav-link  pl-1-custom">
-                                <p>Add Restaunrants</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="nav-item nav-item-customer">
                     <a [routerLink]="['/cate-restaurant']" class="nav-link dashboard" *ngIf="role == 'PARTNER'">
                         <i class="nav-icon fas fa-th"></i>
@@ -170,6 +152,7 @@
                         </p>
                     </a>
                 </li>
+              
 
             </ul>
         </nav>

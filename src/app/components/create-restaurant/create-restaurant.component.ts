@@ -76,7 +76,7 @@ export class CreateRestaurantComponent implements OnInit {
   GetTags(){
     this.http
       .get(
-        'http://localhost:7090/api/Tags/tags'
+        'http://localhost:7090/api/tags/tags'
       )
       .subscribe((x) => {
         this.lstTag = x;

@@ -63,7 +63,8 @@
                   <label>Category</label>
                   
                   <select class="form-control select2" [(ngModel)]="data.category" formControlName="category" style="width: 100%;">
-                    <option *ngFor="let item of lsttag" value="{{item.name}}">{{item.name}}</option>
+                    <option  [selected]="true">dâ</option>
+                    <option *ngFor="let item of lsttag" value="{{item.name}}"  [selected]="item === data.category">{{item.name}}</option>
                   </select>
                   <div class="error_text" *ngIf="form['controls']['category'].dirty && form['controls']['category'].errors">
                     <small style="color: red; font-size: 18px;" *ngIf="form['controls']['category'].errors['required']">Category is required.</small> 

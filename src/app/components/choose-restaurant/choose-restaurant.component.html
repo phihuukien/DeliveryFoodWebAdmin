@@ -7,12 +7,27 @@
                 <img src="{{imagesApiUrl}}/logo/{{item.images.logo}}.png" class="restaurant_img" alt="">
             </div>
             <div class="text_restaurant">
-                <p class="mb-0">{{item.name}}</p>
+                <p class="mb-0">{{item.name}} </p>
                 <p class="mb-0">{{item.location}}</p>
             </div>
         </div>
+        
+        <div  class="restaurant" style="    border: 5px solid green;
+        border-radius: 212px;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            height: 155px;">
+           <a routerLink="/create-new-restaurant">
+            <div class="text_restaurant">
+              
+                <p class="mb-0"><i class="fas fa-plus" style="color: rgb(6, 209, 97); font-size: 100px;"></i></p>
+            </div>
+           </a>
+           
+        </div>
     </div>
-    <div class="button" routerLink="/dasboard">
+    <div class="button" (click)="choose()">
         <button style="--clr:#39FF14" ><span>Open the door</span><i></i></button>
     </div>
 </div>

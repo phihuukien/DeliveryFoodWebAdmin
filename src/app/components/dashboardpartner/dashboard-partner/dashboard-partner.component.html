@@ -174,6 +174,7 @@
                       <td>{{item.priceTotal}} $</td>
                       <td><span class="badge badge-info" *ngIf="item.deliveringStatus == 1">waiting</span>
                         <span class="badge badge-success" *ngIf="item.deliveringStatus == 2">there is a shipper</span>
+                        <span class="badge badge-success" *ngIf="item.deliveringStatus > 3">Success</span>
                       </td>
                       <td>
                         <a href="" data-toggle="tooltip" data-placement="button" title="print order"  data-toggle="modal" data-target="#modal-lg" style="cursor: pointer;" (click)="getOrderById(item.id)" *ngIf="item.deliveringStatus == 2"><i class="fas fa-print" style="color: black;"></i></a> 
